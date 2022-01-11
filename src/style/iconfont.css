@@ -1,0 +1,118 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3055780 */
+  src: url('//at.alicdn.com/t/font_3055780_fm1qaabpzws.woff2?t=1641895349398') format('woff2'),
+       url('//at.alicdn.com/t/font_3055780_fm1qaabpzws.woff?t=1641895349398') format('woff'),
+       url('//at.alicdn.com/t/font_3055780_fm1qaabpzws.ttf?t=1641895349398') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-box:before {
+  content: "\e6cb";
+}
+
+.icon-listview:before {
+  content: "\e67b";
+}
+
+.icon-ic24-transaction:before {
+  content: "\e663";
+}
+
+.icon-search1:before {
+  content: "\e649";
+}
+
+.icon-search:before {
+  content: "\e82e";
+}
+
+.icon-hot1:before {
+  content: "\e756";
+}
+
+.icon-price:before {
+  content: "\e6fc";
+}
+
+.icon-all:before {
+  content: "\e744";
+}
+
+.icon-order:before {
+  content: "\e7b3";
+}
+
+.icon-tradingdata:before {
+  content: "\e7b5";
+}
+
+.icon-PaymentMethod:before {
+  content: "\e65c";
+}
+
+.icon-right:before {
+  content: "\e721";
+}
+
+.icon-arrow-left-bold:before {
+  content: "\e685";
+}
+
+.icon-hot:before {
+  content: "\e60e";
+}
+
+.icon-31rexiao:before {
+  content: "\e600";
+}
+
+.icon-a-11rexiao:before {
+  content: "\e635";
+}
+
+.icon-my:before {
+  content: "\e78b";
+}
+
+.icon-store:before {
+  content: "\e731";
+}
+
+.icon-home:before {
+  content: "\e674";
+}
+
+.icon-view:before {
+  content: "\e608";
+}
+
+.icon-good:before {
+  content: "\e673";
+}
+
+.icon-time:before {
+  content: "\e680";
+}
+
+.icon-ts-tubiao_mediaserver:before {
+  content: "\e720";
+}
+
+.icon-gaojian-xiangguancaifang:before {
+  content: "\e672";
+}
+
+.icon-trend:before {
+  content: "\e87f";
+}
+
+.icon-arrow-right:before {
+  content: "\e743";
+}
