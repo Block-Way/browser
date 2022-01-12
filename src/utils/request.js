@@ -2,9 +2,9 @@ import axios from 'axios'
 import qs from 'qs'; //参数序列化，把数据格式转为 x-www-form-urlencoded
 
 axios.create({
-  //crossDomain: true,//设置cross跨域
+  crossDomain: true,//设置cross跨域
   withCredentials: false,  //跨域请求是否允许携带cookie资源凭证
-  baseurl: process.env.VUE_APP_BASE_API,
+  baseurl: '',
   time: 1000               //请求超时时间
   // responseType:"arraybuffer"  返回的数据格式
 })
