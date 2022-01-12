@@ -112,6 +112,7 @@ import {
   datePicker,
   button
 } from 'element-plus'
+import { login } from "@/api/home";
 export default {
   components: {
     NavTab,
@@ -170,7 +171,28 @@ export default {
       },
     };
   },
+  mounted() {
+    this.fetchHomePieData()
+  },
   methods: {
+    //获取首页饼状图数据
+    fetchHomePieData() {
+      login().then(res=>{
+        console.log(res)
+        console.log(this.chartOptions.series[0].data)
+        let dataArr = []
+        res.map(item => {
+          let arrItem = []
+          arrItem[0] = item.name
+          arrItem[1] = 20
+          dataArr.push(arrItem)
+        })
+        console.log('dataArr', dataArr)
+        this.chartOptions.series[0].data = dataArr
+      }).catch(error => {
+        console.log(error);
+      })
+    },
     clickTabsItem(currentTab) {
       this.currentTab = currentTab
     }
