@@ -2,7 +2,7 @@
 <div class="container">
   <div class="content">
     <div class="content-left">
-      <div class="content-left-logo">Logo</div>
+      <div class="content-left-logo"><img src="../assets/logo.svg" style="height:32px;" /><h3>zos scan</h3></div>
       <div class="content-left-tabs">
         <div class="content-left-tabs-item" @click="clickTabsItem(item, index)" :class="index === currentTab ? 'content-left-tabs-item-clicked' : ''" v-for="(item, index) in tabsItemList" :key="index">
           {{ item.title }}
@@ -52,20 +52,14 @@ export default {
       }],
       currentTab: 0,
       options: [{
-          value: '选项1',
-          label: '选项1'
+          value: 'Block',
+          label: 'Block'
         }, {
-          value: '选项2',
-          label: '选项2'
+          value: 'Tx',
+          label: 'Tx'
         }, {
-          value: '选项3',
-          label: '选项3'
-        }, {
-          value: '选项4',
-          label: '选项4'
-        }, {
-          value: '选项5',
-          label: '选项5'
+          value: 'Address',
+          label: 'Address'
         }],
         value: ''
     }

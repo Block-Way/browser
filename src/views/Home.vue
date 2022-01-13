@@ -61,14 +61,14 @@
         No recent block availabel
       </div> -->
        <div class="table">
-         <div class="table-item" v-for="(item, index) in 20" :key="index">
+         <div class="table-item" v-for="(item, index) in blocks" :key="index">
           <div class="table-item-left">
-            <div class="table-item-left-number">48957</div>
-            <div class="table-item-left-transaction">Transactions: 1</div>
+            <div class="table-item-left-number">{{item.height}}</div>
+            <div class="table-item-left-transaction">Transactions: {{item.transactions}}</div>
           </div>
           <div class="table-item-right">
-            <div class="table-item-right-ago">> 12s ago</div>
-            <div class="table-item-right-time">2022/01/11 10:21:07+UTC</div>
+            <div class="table-item-right-ago">> {{item.fromNow}}</div>
+            <div class="table-item-right-time"> {{item.time}}</div>
           </div>
         </div>
       </div>
@@ -87,14 +87,14 @@
         No recent transaction availabel
       </div> -->
        <div class="table">
-        <div class="table-item" v-for="(item, index) in 20" :key="index">
+        <div class="table-item" v-for="(item, index) in txs" :key="index">
           <div class="table-item-left">
-            <div class="table-item-left-number"> <span class="tx">TX#</span> 0eshaskhe89754kjhaksfh</div>
-            <div class="table-item-left-transaction">Token</div>
+            <div class="table-item-left-number"> <span class="tx">TX#</span> {{item.txid}}</div>
+            <div class="table-item-left-transaction">Token: {{item.amount}} zos</div>
           </div>
           <div class="table-item-right">
-            <div class="table-item-right-ago">> 12s ago</div>
-            <div class="table-item-right-time">Fee: 0.01 ZOS ZOS</div>
+            <div class="table-item-right-ago">> {{item.fromNow}}</div>
+            <div class="table-item-right-time">Fee: {{item.fee}} zos</div>
           </div>
         </div>
       </div>
@@ -104,6 +104,7 @@
 </template>
 
 <script>
+import moment from 'moment'
 import NavTab from '@/components/navTab'
 import {
   Chart
@@ -112,7 +113,7 @@ import {
   datePicker,
   button
 } from 'element-plus'
-import { login } from "@/api/home";
+import { listdelegate,newblock,newtx,fromNow } from "@/api/home";
 export default {
   components: {
     NavTab,
@@ -156,12 +157,6 @@ export default {
           data: [
             ['text1', 45.0],
             ['text2', 26.8],
-            // {
-            //   name: 'Chrome',
-            //   y: 12.8,
-            //   sliced: true,
-            //   selected: true
-            // },
             ['text3', 26.8],
             ['text4', 8.5],
             ['text5', 6.2],
@@ -169,34 +164,76 @@ export default {
           ]
         }]
       },
+      blocks: [{"height":1234,"transactions":2,"fromNow":"15s ago","time": "2021/01/11 10:21:07+UTC"}],
+      txs:[{"txid":"aaaaaaaa","fromNow":"15s ago","fee":"0.01","amount":"10"}]
     };
   },
   mounted() {
     this.fetchHomePieData()
+    if (this.timer) {
+      clearInterval(this.timer);
+    } else {
+      this.timer = setInterval(() => {
+        this.fetchHomePieData()
+      }, 5000);
+    }
   },
+
+  destroyed() {
+    clearInterval(this.timer);
+  },
+
   methods: {
-    //获取首页饼状图数据
     fetchHomePieData() {
-      login().then(res=>{
-        console.log(res)
-        console.log(this.chartOptions.series[0].data)
+      listdelegate().then(res=>{
         let dataArr = []
         res.map(item => {
           let arrItem = []
           arrItem[0] = item.name
-          arrItem[1] = 20
+          arrItem[1] = parseFloat(item.votes)
           dataArr.push(arrItem)
         })
         console.log('dataArr', dataArr)
         this.chartOptions.series[0].data = dataArr
       }).catch(error => {
         console.log(error);
-      })
+      });
+
+      newblock().then(res=>{
+        let dataArr = []
+        res.map(item => {
+          let arrItem = {}
+          arrItem.height = item.height
+          arrItem.transactions = item.txs
+          arrItem.fromNow =  fromNow(item.transtime)
+          arrItem.time = moment.unix(item.time).format('yyyy-MM-DD HH:mm:ss')
+          dataArr.push(arrItem)
+        })
+        this.blocks = dataArr
+      }).catch(error => {
+        console.log(error);
+      });
+
+      newtx().then(res=>{
+        let dataArr = []
+        res.map(item => {
+          let arrItem = {}
+          arrItem.txid = item.txid
+          arrItem.fromNow = fromNow(item.transtime)
+          arrItem.fee = item.fee
+          arrItem.amount = item.amount
+          dataArr.push(arrItem)
+        })
+        this.txs = dataArr
+      }).catch(error => {
+        console.log(error);
+      });
+
     },
     clickTabsItem(currentTab) {
       this.currentTab = currentTab
     }
-  }
+  }//methods
 }
 </script>
 
