@@ -67,7 +67,7 @@ export default {
   methods: {
     clickTabsItem(item, index) {
       this.currentTab = index
-      this.emit('clickTabsItem', this.currentTab)
+      this.$emit('clickTabsItem', this.currentTab)
     }
   }
 }
