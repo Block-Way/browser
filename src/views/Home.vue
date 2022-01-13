@@ -174,7 +174,6 @@ export default {
       clearInterval(this.timer);
     } else {
       this.timer = setInterval(() => {
-        // methods中请求数据的方法
         this.fetchHomePieData()
       }, 5000);
     }
@@ -185,7 +184,6 @@ export default {
   },
 
   methods: {
-    //获取首页饼状图数据
     fetchHomePieData() {
       listdelegate().then(res=>{
         let dataArr = []
