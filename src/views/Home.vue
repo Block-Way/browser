@@ -2,7 +2,7 @@
 <div class="home">
   <nav-tab @clickTabsItem="clickTabsItem"></nav-tab>
   <div v-show="currentTab === 0">
-    <div class="spotlight module" @click="toDetailsTest()">
+    <div class="spotlight module">
       <span>Block spotlight failed to load, refresh page to try again</span>
     </div>
     <div class="second module">
@@ -62,7 +62,7 @@
         No recent block availabel
       </div> -->
         <div class="table">
-          <div class="table-item" v-for="(item, index) in blocks" :key="index">
+          <div class="table-item" v-for="(item, index) in blocks" :key="index" @click="BlockDetails(item.hash)">
             <div class="table-item-left">
               <div class="table-item-left-number">{{item.height}}</div>
               <div class="table-item-left-transaction">Transactions: {{item.transactions}}</div>
@@ -88,7 +88,7 @@
         No recent transaction availabel
       </div> -->
         <div class="table">
-          <div class="table-item" v-for="(item, index) in txs" :key="index">
+          <div class="table-item" v-for="(item, index) in txs" :key="index" @click="TransDetails(item.txid)">
             <div class="table-item-left">
               <div class="table-item-left-number"> <span class="tx">TX#</span> {{item.txid}}</div>
               <div class="table-item-left-transaction">Token: {{item.amount}} zos</div>
@@ -314,11 +314,18 @@ export default {
 
   methods: {
     //跳转详情按钮带参
-    toDetailsTest() {
+    BlockDetails(hash) {
       console.log('click');
       this.$router.push({
         path: '/blockDetails',
-        query: { testKey: 'testValue' }
+        query: { "hash": hash }
+      })
+    },
+    TransDetails(txid) {
+      console.log('click');
+      this.$router.push({
+        path: '/TransDetails',
+        query: { "txid": txid }
       })
     },
     fetchHomePieData() {
@@ -344,6 +351,7 @@ export default {
           arrItem.transactions = item.txs
           arrItem.fromNow = fromNow(item.transtime)
           arrItem.time = moment.unix(item.time).format('yyyy-MM-DD HH:mm:ss')
+          arrItem.hash = item.hash
           dataArr.push(arrItem)
         })
         this.blocks = dataArr

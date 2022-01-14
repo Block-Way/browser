@@ -83,7 +83,7 @@ export default {
     }
   },
   mounted() {
-    let testValue = this.$route.query.testKey
+    let testValue = this.$route.query.hash
     console.log('测试参数', testValue);
   },
   methods: {
