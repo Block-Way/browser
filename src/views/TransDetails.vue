@@ -4,40 +4,80 @@
   <div class="content">
     <div class="module">
       <div class="module-title">
-        Trading Information
+        Transaction Information
       </div>
       <div class="module-content">
         <div class="module-content-item module-content-left">
-          <div class="content-item" v-for="(item, index) in leftList" :key="index">
-            <div class="item-title">{{ item.title }}</div>
-            <div class="item-word">{{ item.content }}</div>
+          <div class="content-item">
+            <div class="item-title"> height </div>
+            <div class="item-word"> {{tx.height}} </div>
           </div>
-          <!-- <div class="module-content-item-title">Block height</div>
-          <div class="module-content-item-word">61e0e8073987d010d256eeb93fedeead89966adcf296d5aba121200e2061337c</div> -->
+          <div class="content-item">
+            <div class="item-title"> block_hash </div>
+            <div class="item-word" @click="BlockDetails(tx.block_hash)"> {{tx.block_hash}} </div>
+          </div>
+          <div class="content-item">
+            <div class="item-title"> from </div>
+            <div class="item-word"> {{tx.from}} </div>
+          </div>
+
+          <div class="content-item">
+            <div class="item-title"> amount </div>
+            <div class="item-word"> {{tx.amount}} </div>
+          </div>
+
+          <div class="content-item">
+            <div class="item-title"> type </div>
+            <div class="item-word"> {{tx.type}} </div>
+          </div>
+
+          <div class="content-item">
+            <div class="item-title"> dpos_in </div>
+            <div class="item-word"> {{tx.dpos_in}} </div>
+          </div>
+
+          <div class="content-item">
+            <div class="item-title"> client_in </div>
+            <div class="item-word"> {{tx.client_in}} </div>
+          </div>
+
         </div>
         <div class="module-content-item module-content-right">
-          <div class="content-item" v-for="(item, index) in rightList" :key="index">
-            <div class="item-title">{{ item.title }}</div>
-            <div class="item-word" :style="index === 0 ? 'color: skyblue;' : ''">{{ item.content }}</div>
+          <div class="content-item">
+            <div class="item-title"> data_id </div>
+            <div class="item-word"> {{tx.id}} </div>
+          </div>
+
+          <div class="content-item">
+            <div class="item-title"> tx_hash </div>
+            <div class="item-word"> {{tx.txid}} </div>
+          </div>
+          <div class="content-item">
+            <div class="item-title"> to </div>
+            <div class="item-word"> {{tx.to}} </div>
+          </div>
+          <div class="content-item">
+            <div class="item-title"> fee </div>
+            <div class="item-word"> {{tx.fee}} </div>
+          </div>
+          <div class="content-item">
+            <div class="item-title"> transtime </div>
+            <div class="item-word"> {{tx.transtime}} </div>
+          </div>
+          <div class="content-item">
+            <div class="item-title"> dpos_out </div>
+            <div class="item-word"> {{tx.dpos_out}} </div>
+          </div>
+          <div class="content-item">
+            <div class="item-title"> client_out </div>
+            <div class="item-word"> {{tx.client_out}} </div>
           </div>
         </div>
       </div>
       <div class="module-title" style="margin-top: 20px;">
-       Transaction Hash: <span style="color: skyblue;font-size: 12px;">61e0e8073987d010d256eeb93fedeead89966adcf296d5aba121200e2061337c</span> <span style="color: gray;font-size: 12px;">(Mining reward)</span>
+      Transaction data: <p style="width: 100%;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{tx.data}}</p>
       </div>
-      <div class="transaction-infor">
-        <div class="coinbse">
-          Coinbase
-        </div>
-        <div class="number">100.0000</div>
-        <div class="right icon iconfont icon-arrow-right1"></div>
-        <div class="address">61e0e8073987d010d256eeb93fedeead89966adcf296d5aba121200e2061337c</div>
-        <div class="number">100.0000</div>
-      </div>
-      <div class="pagination">
-        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage4" :page-sizes="[100, 200, 300, 400]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="400">
-        </el-pagination>
-      </div>
+
     </div>
   </div>
   <page-bottom></page-bottom>
@@ -45,9 +85,13 @@
 </template>
 
 <script>
+import moment from 'moment'
 import NavTab from '@/components/navTab'
 import pageBottom from '@/components/pageBottom'
 import pagination from 'element-plus'
+import {
+  gettx
+} from "@/api/universal";
 export default {
   components: {
     NavTab,
@@ -56,47 +100,52 @@ export default {
   },
   data() {
     return {
-      leftList: [{
-        title: 'Transaction Hash',
-        content: '61e0e8073987d010d256eeb93fedeead89966adcf296d5aba121200e2061337c'
-      }, {
-        title: 'Confirmation Time',
-        content: '2022-01-14 11:18:14'
-      }, {
-        title: 'Block Height',
-        content: '1'
-      },{
-        title: 'Transaction Notes',
-        content: 'Transaction Notes'
-      }],
-      rightList: [{
-        title: 'Number of transactions(BBC)',
-        content: '100.00000'
-      }, {
-        title: 'Confirmation',
-        content: '2022-01-14 11:18:14'
-      }, {
-        title: 'Block Hash',
-        content: '61e0e8073987d010d256eeb93fedeead89966adcf296d5aba121200e2061337c'
-      }],
-      currentPage1: 5,
-        currentPage2: 5,
-        currentPage3: 5,
-        currentPage4: 4
+      tx : {}
     }
   },
   methods: {
-    handleSizeChange(val) {
-        console.log(`每页 ${val} 条`);
-      },
-      handleCurrentChange(val) {
-        console.log(`当前页: ${val}`);
-      },
-      clickTabsItem(currentTab) {
-    console.log(currentTab);
+    clickTabsItem(currentTab) {
+    },
+    BlockDetails(hash) {
+      console.log('click');
+      this.$router.push({
+        path: '/blockDetails',
+        query: { "hash": hash }
+      })
+    },
+    TransDetails(txid) {
+      console.log('click');
+      this.$router.push({
+        path: '/TransDetails',
+        query: { "txid": txid }
+      })
+    }
+  },
+  mounted() {
+    
+    gettx(this.$route.query.txid).then(res => {
+      this.tx = res[0];
+      this.tx.transtime = moment.unix(this.tx.transtime).format('yyyy-MM-DD HH:mm:ss');
+      if (this.tx.dpos_in == null) {
+        this.tx.dpos_in = '-';
+      }
+      if (this.tx.client_in == null) {
+        this.tx.client_in = '-';
+      }
+      if (this.tx.dpos_out == null) {
+        this.tx.dpos_out = '-';
+      }
+      if (this.tx.client_out == null) {
+        this.tx.client_out = '-';
+      }
+      if (this.tx.from == "000000000000000000000000000000000000000000000000000000000") {
+        this.tx.from = "Coinbase";
+      }
+      console.log(this.tx)
+    }).catch(error => {
+      console.log(error);
+    });
   }
-  }
-  
 }
 </script>
 

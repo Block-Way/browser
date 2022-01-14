@@ -8,35 +8,67 @@
       </div>
       <div class="module-content">
         <div class="module-content-item module-content-left">
-          <div class="content-item" v-for="(item, index) in leftList" :key="index">
-            <div class="item-title">{{ item.title }}</div>
-            <div class="item-word">{{ item.content }}</div>
+          <div class="content-item" >
+            <div class="item-title">height</div>
+            <div class="item-word">{{block.height}}</div>
           </div>
-          <!-- <div class="module-content-item-title">Block height</div>
-          <div class="module-content-item-word">61e0e8073987d010d256eeb93fedeead89966adcf296d5aba121200e2061337c</div> -->
-        </div>
+          <div class="content-item" >
+            <div class="item-title">type</div>
+            <div class="item-word">{{block.type}}</div>
+          </div>
+
+          <div class="content-item" >
+            <div class="item-title">reward_money</div>
+            <div class="item-word">{{block.reward_money}}</div>
+          </div>
+
+          <div class="content-item" >
+            <div class="item-title">Transactions</div>
+            <div class="item-word">{{block.txs}}</div>
+          </div>
+
+          </div>
         <div class="module-content-item module-content-right">
-          <div class="content-item" v-for="(item, index) in rightList" :key="index">
-            <div class="item-title">{{ item.title }}</div>
-            <div class="item-word" :style="index === 0 ? 'color: skyblue;' : ''">{{ item.content }}</div>
+         
+          <div class="content-item">
+            <div class="item-title">Hash</div>
+            <div class="item-word" :style="index === 0 ? 'color: skyblue;' : ''">{{block.hash}}</div>
+          </div>
+
+          <div class="content-item">
+            <div class="item-title">Time</div>
+            <div class="item-word" :style="index === 0 ? 'color: skyblue;' : ''">{{block.time}}</div>
+          </div>
+
+          <div class="content-item">
+            <div class="item-title">reward_address</div>
+            <div class="item-word" :style="index === 0 ? 'color: skyblue;' : ''">{{block.reward_address}}</div>
+          </div>
+          <div class="content-item">
+            <div class="item-title">prev_hash</div>
+            <div class="item-word" :style="index === 0 ? 'color: skyblue;' : ''" @click="BlockDetails(block.prev_hash)">{{block.prev_hash}}</div>
           </div>
         </div>
       </div>
-      <div class="module-title" style="margin-top: 20px;">
-        Transaction 1
-      </div>
-      <div class="transaction-infor">
-        <div class="coinbse">
-          Coinbase
+
+       <div class="table">
+        <div class="table-item" v-for="(item, index) in blocktx" :key="index">
+            <div class="module-title" style="margin-top: 20px;" @click="TransDetails(item.txid)">
+              Transaction {{index+1}} {{item.txid}}
+            </div>
+            <div class="transaction-infor">
+              <div class="coinbse" v-if="item.from==='000000000000000000000000000000000000000000000000000000000'" >
+                Coinbse
+              </div>
+              <div v-else>
+                {{item.from}}
+              </div>
+            <div class="number">{{item.fee}}</div>
+            <div class="right icon iconfont icon-arrow-right1"></div>
+            <div class="address">{{item.to}}</div>
+            <div class="number">{{item.amount}}</div>
+          </div>
         </div>
-        <div class="number">100.0000</div>
-        <div class="right icon iconfont icon-arrow-right1"></div>
-        <div class="address">61e0e8073987d010d256eeb93fedeead89966adcf296d5aba121200e2061337c</div>
-        <div class="number">100.0000</div>
-      </div>
-      <div class="pagination">
-        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage4" :page-sizes="[100, 200, 300, 400]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="400">
-        </el-pagination>
       </div>
     </div>
   </div>
@@ -45,9 +77,14 @@
 </template>
 
 <script>
+import moment from 'moment'
 import NavTab from '@/components/navTab'
 import pageBottom from '@/components/pageBottom'
 import pagination from 'element-plus'
+import {
+  getblock,getblocktx
+} from "@/api/universal";
+
 export default {
   components: {
     NavTab,
@@ -56,48 +93,47 @@ export default {
   },
   data() {
     return {
-      leftList: [{
-        title: 'Block',
-        content: '1085524'
-      }, {
-        title: 'Difficulty',
-        content: '25'
-      }, {
-        title: 'Transactions',
-        content: '1'
-      }],
-      rightList: [{
-        title: 'Block Hash',
-        content: '61e0e8073987d010d256eeb93fedeead89966adcf296d5aba121200e2061337c'
-      }, {
-        title: 'Block Time',
-        content: '2022-01-14 11:18:14'
-      }, {
-        title: 'Confirmation',
-        content: '2'
-      }],
-      currentPage1: 5,
-        currentPage2: 5,
-        currentPage3: 5,
-        currentPage4: 4
+      block: {
+        prev_hash: 5,
+        time: 5,
+        height: 4,
+        reward_address:1,
+        reward_money:1,
+        type:"primary-dpos",
+        txs:3
+      },
+      blocktx :[]
     }
   },
   mounted() {
-    let testValue = this.$route.query.hash
-    console.log('测试参数', testValue);
+     getblock(this.$route.query.hash).then(res => {
+        this.block = res[0];
+        this.block.time = moment.unix(this.block.time).format('yyyy-MM-DD HH:mm:ss')
+      }).catch(error => {
+        console.log(error);
+      });
+    getblocktx(this.$route.query.hash).then(res => {
+        this.blocktx = res;
+      }).catch(error => {
+        console.log(error);
+      });
   },
   methods: {
-    handleSizeChange(val) {
-        console.log(`每页 ${val} 条`);
-      },
-      handleCurrentChange(val) {
-        console.log(`当前页: ${val}`);
-      },
-      clickTabsItem(currentTab) {
-    console.log(currentTab);
+    BlockDetails(hash) {
+      console.log('click');
+      this.$router.push({
+        path: '/blockDetails',
+        query: { "hash": hash }
+      })
+    },
+    TransDetails(txid) {
+      console.log('click');
+      this.$router.push({
+        path: '/TransDetails',
+        query: { "txid": txid }
+      })
+    }
   }
-  }
-  
 }
 </script>
 
