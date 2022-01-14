@@ -15,6 +15,16 @@ const routes = [
     path: '/staking',
     name: 'Staking',
     component: () => import('../views/Staking.vue')
+  },
+  {
+    path: '/blockDetails',
+    name: 'blockDetails',
+    component: () => import('@/views/BlockDetails.vue')
+  },
+  {
+    path: '/transDetails',
+    name: 'transDetails',
+    component: () => import('@/views/TransDetails.vue')
   }
 ]
 
