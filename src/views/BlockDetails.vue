@@ -82,6 +82,10 @@ export default {
         currentPage4: 4
     }
   },
+  mounted() {
+    let testValue = this.$route.query.testKey
+    console.log('测试参数', testValue);
+  },
   methods: {
     handleSizeChange(val) {
         console.log(`每页 ${val} 条`);

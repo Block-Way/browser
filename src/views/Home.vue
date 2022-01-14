@@ -2,7 +2,7 @@
 <div class="home">
   <nav-tab @clickTabsItem="clickTabsItem"></nav-tab>
   <div v-show="currentTab === 0">
-    <div class="spotlight module">
+    <div class="spotlight module" @click="toDetailsTest()">
       <span>Block spotlight failed to load, refresh page to try again</span>
     </div>
     <div class="second module">
@@ -313,6 +313,14 @@ export default {
   },
 
   methods: {
+    //跳转详情按钮带参
+    toDetailsTest() {
+      console.log('click');
+      this.$router.push({
+        path: '/blockDetails',
+        query: { testKey: 'testValue' }
+      })
+    },
     fetchHomePieData() {
       listdelegate().then(res => {
         let dataArr = []
