@@ -2,7 +2,7 @@
   <div class="staking">
     <nav-tab @clickTabsItem="clickTabsItem"></nav-tab>
     <div class="module">
-      <div class="table">
+      <!-- <div class="table">
         <div
           class="table-item"
           v-for="(item, index) in listdelegate"
@@ -14,17 +14,27 @@
             <span>节点名称: {{ item.name }}</span>
           </div>
         </div>
-      </div>
+      </div> -->
+      <el-table :data="listdelegate" style="width: 100%" highlight-current-row>
+          <el-table-column prop="address" label="Address" width="500">
+          </el-table-column>
+          <el-table-column prop="votes" label="Votes">
+          </el-table-column>
+          <el-table-column prop="name" label="Name">
+          </el-table-column>
+        </el-table>
     </div>
   </div>
 </template>
 
 <script>
 import NavTab from "@/components/navTab";
+import { table, tableColumn } from 'element-plus'
 import { listdelegate } from "@/api/staking";
 export default {
   components: {
     NavTab,
+    table, tableColumn
   },
   data() {
     return {
@@ -70,6 +80,7 @@ export default {
   background: #000;
   width: 100%;
   padding-bottom: 100px;
+  min-height: 100vh;
 }
 
 .module {
