@@ -116,9 +116,9 @@
           </el-table-column>
           <el-table-column prop="address" label="Address">
           </el-table-column>
-          <el-table-column prop="tokens" label="Bonded Tokens">
+          <el-table-column prop="tokens" label="Voting Tokens">
           </el-table-column>
-          <el-table-column prop="power" label="Voting Power">
+          <el-table-column prop="power" label="Output quantity">
           </el-table-column>
           <el-table-column prop="uptime" label="Uptime">
           </el-table-column>
@@ -203,6 +203,7 @@ import {
 } from 'element-plus'
 import {
   listdelegate,
+  listdelegate2,
   newblock,
   newtx,
   fromNow
@@ -253,11 +254,7 @@ export default {
           name: 'Proportion',
           data: [
             ['text1', 45.0],
-            ['text2', 26.8],
-            ['text3', 26.8],
-            ['text4', 8.5],
-            ['text5', 6.2],
-            ['text6', 0.7]
+            ['text2', 26.8]
           ]
         }]
       },
@@ -274,19 +271,6 @@ export default {
         "amount": "10"
       }],
       tableData: [{
-          uptime: '2016-05-02',
-          name: 'test name',
-          address: 'test address',
-          tokens: 'test token',
-          power: 'test Power'
-        }, {
-          uptime: '2016-05-02',
-          name: 'test name',
-          address: 'test address',
-          tokens: 'test token',
-          power: 'test Power'
-        },
-        {
           uptime: '2016-05-02',
           name: 'test name',
           address: 'test address',
@@ -381,31 +365,28 @@ export default {
         case 1:
           this.moduleTableTitle = 'Validators List'
           this.secondItemList = ['Validators List', '0 Total'],
-            this.tableData = [{
-                uptime: '2016-05-02',
-                name: 'test name',
-                address: 'test address',
-                tokens: 'test token',
-                power: 'test Power'
-              }, {
-                uptime: '2016-05-02',
-                name: 'test name',
-                address: 'test address',
-                tokens: 'test token',
-                power: 'test Power'
-              },
-              {
-                uptime: '2016-05-02',
-                name: 'test name',
-                address: 'test address',
-                tokens: 'test token',
-                power: 'test Power'
-              }
-            ]
+          
+          listdelegate2().then(res => {
+            this.secondItemList = ['Validators List', res.length + ' Total'];
+            let dataArr = []
+            res.map(item => {
+              let arrItem = {}
+              arrItem.uptime = moment.unix(item.time_end).from(moment.unix(item.time_begin),true);
+              arrItem.name = item.name;
+              arrItem.address = item.address;
+              arrItem.tokens =  item.votes;
+              arrItem.power = item.c;
+              dataArr.push(arrItem)
+            })
+            this.tableData = dataArr;
+          }).catch(error => {
+            console.log(error);
+          });
+          
           break;
         case 2:
           this.moduleTableTitle = 'Transactions List'
-          this.secondItemList = ['Transactions List', '0 Total'],
+          this.secondItemList = ['Transactions List', '20 Total'],
             this.tableData = [{
               hash: 'Tx Hash',
               type: 'Tx Type',
