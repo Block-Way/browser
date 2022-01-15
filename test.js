@@ -23,7 +23,6 @@ function getfromNow(time) {
 }
 //ret = a.diff(b, '')
 //console.log(getfromNow(1641971352 + 3600))
-
 //a.diff(b, 'years', true); // 1.75
 let time_end = 1641372328;
 let time_begin = 1640916097;
