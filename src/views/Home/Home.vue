@@ -1,108 +1,108 @@
 <template>
 <div class="home">
-  <nav-tab @clickTabsItem="clickTabsItem"></nav-tab>
-  <div v-show="currentTab === 0">
-    <div class="spotlight module">
-      <span>Block spotlight failed to load, refresh page to try again</span>
-    </div>
-    <div class="second module">
-      <div class="second-left second-content">
-        <div class="module-title">
-          <div class="module-title-left">
-            <div class="module-title-left-icon icon iconfont icon-my"></div>
-            <div class="module-title-left-word">Top Validators</div>
-          </div>
-          <div class="module-title-viewall">
-            View All
-          </div>
+  <!-- <nav-tab @clickTabsItem="clickTabsItem"></nav-tab> -->
+  <!-- <div v-show="currentTab === 0"> -->
+  <div class="spotlight module">
+    <span>Block spotlight failed to load, refresh page to try again</span>
+  </div>
+  <div class="second module">
+    <div class="second-left second-content">
+      <div class="module-title">
+        <div class="module-title-left">
+          <div class="module-title-left-icon icon iconfont icon-my"></div>
+          <div class="module-title-left-word">Top Validators</div>
         </div>
-        <div class="chart">
-          <highcharts :options="chartOptions" :plotOptions="plotOptions"></highcharts>
-        </div>
-        <div class="empty-data">
-          No validators availabel
+        <div class="module-title-viewall">
+          View All
         </div>
       </div>
-      <div class="second-right second-content">
-        <div class="module-title">
-          <div class="module-title-left">
-            <div class="module-title-left-icon icon iconfont icon-listview"></div>
-            <div class="module-title-left-word">Transaction History</div>
-          </div>
-          <div class="module-title-viewall">
-            View All
-          </div>
-        </div>
-        <div class="select-time">
-          <div class="select-time-all">
-            <el-date-picker v-model="value1" type="daterange" range-separator="" start-placeholder="From" end-placeholder="To" />
-          </div>
-          <div class="select-time-button">
-            <el-button type="primary">Apply</el-button>
-          </div>
-        </div>
-        <div class="empty-data">
-          No transaction availabel
-        </div>
+      <div class="chart">
+        <highcharts :options="chartOptions" :plotOptions="plotOptions"></highcharts>
+      </div>
+      <div class="empty-data">
+        No validators availabel
       </div>
     </div>
+    <div class="second-right second-content">
+      <div class="module-title">
+        <div class="module-title-left">
+          <div class="module-title-left-icon icon iconfont icon-listview"></div>
+          <div class="module-title-left-word">Transaction History</div>
+        </div>
+        <div class="module-title-viewall">
+          View All
+        </div>
+      </div>
+      <div class="select-time">
+        <div class="select-time-all">
+          <el-date-picker v-model="value1" type="daterange" range-separator="" start-placeholder="From" end-placeholder="To" />
+        </div>
+        <div class="select-time-button">
+          <el-button type="primary">Apply</el-button>
+        </div>
+      </div>
+      <div class="empty-data">
+        No transaction availabel
+      </div>
+    </div>
+  </div>
 
-    <div class="second module">
-      <div class="second-left second-content" style="min-height: 60px;">
-        <div class="module-title">
-          <div class="module-title-left">
-            <div class="module-title-left-icon icon iconfont icon-box"></div>
-            <div class="module-title-left-word">Most Recent Blocks</div>
-          </div>
-          <div class="module-title-viewall">
-            View All
-          </div>
+  <div class="second module">
+    <div class="second-left second-content" style="min-height: 60px;">
+      <div class="module-title">
+        <div class="module-title-left">
+          <div class="module-title-left-icon icon iconfont icon-box"></div>
+          <div class="module-title-left-word">Most Recent Blocks</div>
         </div>
-        <!-- <div class="empty-data">
+        <div class="module-title-viewall">
+          View All
+        </div>
+      </div>
+      <!-- <div class="empty-data">
         No recent block availabel
       </div> -->
-        <div class="table">
-          <div class="table-item" v-for="(item, index) in blocks" :key="index" @click="BlockDetails(item.hash)">
-            <div class="table-item-left">
-              <div class="table-item-left-number">{{item.height}}</div>
-              <div class="table-item-left-transaction">Transactions: {{item.transactions}}</div>
-            </div>
-            <div class="table-item-right">
-              <div class="table-item-right-ago">> {{item.fromNow}}</div>
-              <div class="table-item-right-time"> {{item.time}}</div>
-            </div>
+      <div class="table">
+        <div class="table-item" v-for="(item, index) in blocks" :key="index" @click="BlockDetails(item.hash)">
+          <div class="table-item-left">
+            <div class="table-item-left-number">{{item.height}}</div>
+            <div class="table-item-left-transaction">Transactions: {{item.transactions}}</div>
+          </div>
+          <div class="table-item-right">
+            <div class="table-item-right-ago">> {{item.fromNow}}</div>
+            <div class="table-item-right-time"> {{item.time}}</div>
           </div>
         </div>
       </div>
-      <div class="second-right second-content" style="min-height: 60px;">
-        <div class="module-title">
-          <div class="module-title-left">
-            <div class="module-title-left-icon icon iconfont icon-ic24-transaction"></div>
-            <div class="module-title-left-word">Most Recent Transactions</div>
-          </div>
-          <div class="module-title-viewall">
-            View All
-          </div>
+    </div>
+    <div class="second-right second-content" style="min-height: 60px;">
+      <div class="module-title">
+        <div class="module-title-left">
+          <div class="module-title-left-icon icon iconfont icon-ic24-transaction"></div>
+          <div class="module-title-left-word">Most Recent Transactions</div>
         </div>
-        <!-- <div class="empty-data">
+        <div class="module-title-viewall">
+          View All
+        </div>
+      </div>
+      <!-- <div class="empty-data">
         No recent transaction availabel
       </div> -->
-        <div class="table">
-          <div class="table-item" v-for="(item, index) in txs" :key="index" @click="TransDetails(item.txid)">
-            <div class="table-item-left">
-              <div class="table-item-left-number"> <span class="tx">TX#</span> {{item.txid}}</div>
-              <div class="table-item-left-transaction">Token: {{item.amount}} zos</div>
-            </div>
-            <div class="table-item-right">
-              <div class="table-item-right-ago">> {{item.fromNow}}</div>
-              <div class="table-item-right-time">Fee: {{item.fee}} zos</div>
-            </div>
+      <div class="table">
+        <div class="table-item" v-for="(item, index) in txs" :key="index" @click="TransDetails(item.txid)">
+          <div class="table-item-left">
+            <div class="table-item-left-number"> <span class="tx">TX#</span> {{item.txid}}</div>
+            <div class="table-item-left-transaction">Token: {{item.amount}} zos</div>
+          </div>
+          <div class="table-item-right">
+            <div class="table-item-right-ago">> {{item.fromNow}}</div>
+            <div class="table-item-right-time">Fee: {{item.fee}} zos</div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div v-show="currentTab !== 0">
+  <!-- </div> -->
+  <!-- <div v-show="currentTab !== 0">
     <div class="second-title">
       <second-title :itemList="secondItemList" />
     </div>
@@ -182,8 +182,8 @@
         </el-table>
       </div>
     </div>
-  </div>
-  <page-bottom></page-bottom>
+  </div> -->
+  <!-- <page-bottom></page-bottom> -->
 </div>
 </template>
 
@@ -271,13 +271,12 @@ export default {
         "amount": "10"
       }],
       tableData: [{
-          uptime: '2016-05-02',
-          name: 'test name',
-          address: 'test address',
-          tokens: 'test token',
-          power: 'test Power'
-        }
-      ],
+        uptime: '2016-05-02',
+        name: 'test name',
+        address: 'test address',
+        tokens: 'test token',
+        power: 'test Power'
+      }],
       secondItemList: ['Validators', '0 Total']
     };
   },
@@ -302,14 +301,18 @@ export default {
       console.log('click');
       this.$router.push({
         path: '/blockDetails',
-        query: { "hash": hash }
+        query: {
+          "hash": hash
+        }
       })
     },
     TransDetails(txid) {
       console.log('click');
       this.$router.push({
         path: '/TransDetails',
-        query: { "txid": txid }
+        query: {
+          "txid": txid
+        }
       })
     },
     fetchHomePieData() {
@@ -321,7 +324,7 @@ export default {
           arrItem[1] = parseFloat(item.votes)
           dataArr.push(arrItem)
         })
-        console.log('dataArr', dataArr)
+        // console.log('dataArr', dataArr)
         this.chartOptions.series[0].data = dataArr
       }).catch(error => {
         console.log(error);
@@ -365,24 +368,24 @@ export default {
         case 1:
           this.moduleTableTitle = 'Validators List'
           this.secondItemList = ['Validators List', '0 Total'],
-          
-          listdelegate2().then(res => {
-            this.secondItemList = ['Validators List', res.length + ' Total'];
-            let dataArr = []
-            res.map(item => {
-              let arrItem = {}
-              arrItem.uptime = moment.unix(item.time_end).from(moment.unix(item.time_begin),true);
-              arrItem.name = item.name;
-              arrItem.address = item.address;
-              arrItem.tokens =  item.votes;
-              arrItem.power = item.c;
-              dataArr.push(arrItem)
-            })
-            this.tableData = dataArr;
-          }).catch(error => {
-            console.log(error);
-          });
-          
+
+            listdelegate2().then(res => {
+              this.secondItemList = ['Validators List', res.length + ' Total'];
+              let dataArr = []
+              res.map(item => {
+                let arrItem = {}
+                arrItem.uptime = moment.unix(item.time_end).from(moment.unix(item.time_begin), true);
+                arrItem.name = item.name;
+                arrItem.address = item.address;
+                arrItem.tokens = item.votes;
+                arrItem.power = item.c;
+                dataArr.push(arrItem)
+              })
+              this.tableData = dataArr;
+            }).catch(error => {
+              console.log(error);
+            });
+
           break;
         case 2:
           this.moduleTableTitle = 'Transactions List'
