@@ -73,7 +73,6 @@ export default {
   padding-bottom: 100px;
   min-height: 100vh;
 }
-
 .module {
   width: 76%;
   background: #fff;

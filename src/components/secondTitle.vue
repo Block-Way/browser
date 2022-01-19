@@ -32,13 +32,12 @@ export default {
     position: sticky;
     top: 103px;
     .content {
-      width: 80%;
+      width: 100%;
       display: flex;
       justify-content: flex-start;
       align-items: center;
       &-item {
         color: #333;
-
         padding-right: 14px;
         font-size: 14px;
         font-weight: 800;

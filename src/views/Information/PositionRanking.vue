@@ -1,0 +1,85 @@
+<template>
+<div class="staking">
+  <div class="module">
+    <el-table :data="tableData" style="width: 100%" highlight-current-row>
+      <el-table-column prop="rank" label="排名">
+      </el-table-column>
+      <el-table-column prop="address" label="地址">
+      </el-table-column>
+      <el-table-column prop="number" label="数量">
+      </el-table-column>
+      <el-table-column prop="rate" label="节点费率">
+        </el-table-column>
+    </el-table>
+    <br /><br />
+     <el-pagination
+     style="display:flex; justify-content: center;"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="currentPage4"
+      :page-sizes="[100, 200, 300, 400]"
+      :page-size="100"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="400">
+    </el-pagination>
+  </div>
+</div>
+</template>
+
+<script>
+import {
+  table,
+  tableColumn,
+  pagination
+} from 'element-plus'
+export default {
+  components: {
+    table,
+    tableColumn,pagination
+  },
+  data() {
+    return {
+      tableData: [{
+        rank: '1',
+        address: "20m0e5q8dmw4kzgf45mqak1s60fjwgswsddsmsyczvjtjxx2kvn0gz7dr",
+        number: "452345.23",
+        rate: '10.23%'
+      }],
+      value1: '',
+        value2: '',
+        currentPage1: 5,
+        currentPage2: 5,
+        currentPage3: 5,
+        currentPage4: 4
+    };
+  },
+  mounted() {
+    
+  },
+  methods: {
+    handleSizeChange(val) {
+        console.log(`每页 ${val} 条`);
+      },
+      handleCurrentChange(val) {
+        console.log(`当前页: ${val}`);
+      }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+.staking {
+  background: #000;
+  width: 100%;
+  padding-bottom: 100px;
+  min-height: 100vh;
+}
+.module {
+  width: 90%;
+  background: #fff;
+  border-radius: 2px;
+  padding: 10px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+</style>

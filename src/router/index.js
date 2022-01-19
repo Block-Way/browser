@@ -8,6 +8,7 @@ const routes = [
     redirect: { name: 'Home' },
     component: NabTab,
     children: [
+      //首页大模块
       {
         path: 'home',
         name: 'Home',
@@ -28,6 +29,7 @@ const routes = [
         name: 'Transactions',
         component: () => import('@/views/Transactions/Transactions.vue')
       },
+      //区块详情
       {
         path: 'blockDetails',
         name: 'BlockDetails',
@@ -47,7 +49,28 @@ const routes = [
         path: 'gov',
         name: 'Gov',
         component: () => import('@/views/Gov/Gov.vue')
-      }
+      },
+      //区块信息
+      {
+        path: 'infor/blockInfor',
+        name: 'BlockInfor',
+        component: () => import('@/views/Information/BlockInfor.vue')
+      },
+      {
+        path: 'infor/blockStatistics',
+        name: 'BlockStatistics',
+        component: () => import('@/views/Information/BlockStatistics.vue')
+      },
+      {
+        path: 'infor/positionRanking',
+        name: 'PositionRanking',
+        component: () => import('@/views/Information/PositionRanking.vue')
+      },
+      {
+        path: 'infor/votingStatistics',
+        name: 'VotingStatistics',
+        component: () => import('@/views/Information/VotingStatistics.vue')
+      },
     ]
   }
 ]

@@ -1,7 +1,11 @@
 <template>
 <div class="container-all">
-  <nav-tab></nav-tab>
-  <router-view />
+  <div class="top">
+    <nav-tab></nav-tab>
+  </div>
+  <div class="content">
+    <router-view />
+  </div>
   <page-bottom></page-bottom>
 </div>
 </template>
@@ -16,11 +20,19 @@ export default {
 
 <style lang="scss" scoped>
 .container-all {
+  
+}
+.top {
   position: sticky;
   top: 0;
   width: 100%;
   background: #424958;
   padding: 20px 0;
   z-index: 999;
+}
+.content {
+  border: 1px solid #000;
+  // padding-top: 20px;
+  background: #000;
 }
 </style>
