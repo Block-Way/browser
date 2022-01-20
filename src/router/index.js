@@ -29,17 +29,6 @@ const routes = [
         name: 'Transactions',
         component: () => import('@/views/Transactions/Transactions.vue')
       },
-      //区块详情
-      {
-        path: 'blockDetails',
-        name: 'BlockDetails',
-        component: () => import('@/views/Details/BlockDetails.vue')
-      },
-      {
-        path: 'transDetails',
-        name: 'TransDetails',
-        component: () => import('@/views/Details/TransDetails.vue')
-      },
       {
         path: 'assets',
         name: 'Assets',
@@ -49,6 +38,22 @@ const routes = [
         path: 'gov',
         name: 'Gov',
         component: () => import('@/views/Gov/Gov.vue')
+      },
+      //区块详情
+      {
+        path: 'details/blockDetails',
+        name: 'BlockDetails',
+        component: () => import('@/views/Details/BlockDetails.vue')
+      },
+      {
+        path: 'details/transDetails',
+        name: 'TransDetails',
+        component: () => import('@/views/Details/TransDetails.vue')
+      },
+      {
+        path: 'details/addressDetails',
+        name: 'AddressDetails',
+        component: () => import('@/views/Details/AddressDetails.vue')
       },
       //区块信息
       {

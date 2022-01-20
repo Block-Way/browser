@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-  <nav-tab @clickTabsItem="clickTabsItem"></nav-tab>
+  <!-- <nav-tab @clickTabsItem="clickTabsItem"></nav-tab> -->
   <div class="content">
     <div class="module">
       <div class="module-title">
