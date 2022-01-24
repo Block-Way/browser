@@ -57,9 +57,9 @@ const routes = [
         component: () => import('@/views/Information/PositionRanking.vue')
       },
       {
-        path: 'votingStatistics',
-        name: 'VotingStatistics',
-        component: () => import('@/views/Information/VotingStatistics.vue')
+        path: 'networkInformation',
+        name: 'NetworkInformation',
+        component: () => import('@/views/Information/NetworkInformation.vue')
       },
     ]
   }

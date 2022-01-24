@@ -52,8 +52,8 @@ export default {
         title: 'PositionRanking',
         url: '/positionRanking'
       }, {
-        title: 'VotingStatistics',
-        url: '/votingStatistics'
+        title: 'NetworkInformation',
+        url: '/networkInformation'
       }],
       currentTab: 0,
       options: [{
