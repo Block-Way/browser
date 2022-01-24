@@ -8,10 +8,10 @@
       </el-table-column>
       <el-table-column prop="number" label="数量">
       </el-table-column>
-      <el-table-column prop="rate" label="节点费率">
+      <el-table-column prop="rate" label="占有百分比">
         </el-table-column>
     </el-table>
-    <br /><br />
+    <!--
      <el-pagination
      style="display:flex; justify-content: center;"
       @size-change="handleSizeChange"
@@ -21,7 +21,7 @@
       :page-size="100"
       layout="total, sizes, prev, pager, next, jumper"
       :total="400">
-    </el-pagination>
+    </el-pagination> -->
   </div>
 </div>
 </template>
@@ -31,7 +31,10 @@ import {
   table,
   tableColumn,
   pagination
-} from 'element-plus'
+} from 'element-plus';
+import {
+  rankstat
+} from '@/api/rankstat';
 export default {
   components: {
     table,
@@ -54,7 +57,21 @@ export default {
     };
   },
   mounted() {
-    
+     rankstat().then(res => {
+        let dataArr = []
+        let index = 1
+        res.map(item => {
+          let obj = {"rank":index};
+          index = index + 1;
+          obj.address = item.address;
+          obj.number = item.amount;
+          obj.rate = item.percent;
+          dataArr.push(obj)
+        })
+        this.tableData = dataArr
+      }).catch(error => {
+        console.log(error);
+      });
   },
   methods: {
     handleSizeChange(val) {
