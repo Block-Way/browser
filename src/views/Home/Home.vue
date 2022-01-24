@@ -300,7 +300,7 @@ export default {
     BlockDetails(hash) {
       console.log('click');
       this.$router.push({
-        path: '/blockDetails',
+        path: '/details/blockDetails',
         query: {
           "hash": hash
         }
@@ -309,9 +309,18 @@ export default {
     TransDetails(txid) {
       console.log('click');
       this.$router.push({
-        path: '/TransDetails',
+        path: '/details/transDetails',
         query: {
           "txid": txid
+        }
+      })
+    },
+    AddrDetails(addr) {
+      console.log('click');
+      this.$router.push({
+        path: '/details/addressDetails',
+        query: {
+          "addr": addr
         }
       })
     },

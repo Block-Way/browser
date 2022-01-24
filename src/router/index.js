@@ -24,21 +24,6 @@ const routes = [
         name: 'Staking',
         component: () => import('@/views/Staking/Staking.vue')
       },
-      {
-        path: 'transactions',
-        name: 'Transactions',
-        component: () => import('@/views/Transactions/Transactions.vue')
-      },
-      {
-        path: 'assets',
-        name: 'Assets',
-        component: () => import('@/views/Assets/Assets.vue')
-      },
-      {
-        path: 'gov',
-        name: 'Gov',
-        component: () => import('@/views/Gov/Gov.vue')
-      },
       //区块详情
       {
         path: 'details/blockDetails',
@@ -62,17 +47,17 @@ const routes = [
         component: () => import('@/views/Information/BlockInfor.vue')
       },
       {
-        path: 'infor/blockStatistics',
+        path: 'blockStatistics',
         name: 'BlockStatistics',
         component: () => import('@/views/Information/BlockStatistics.vue')
       },
       {
-        path: 'infor/positionRanking',
+        path: 'positionRanking',
         name: 'PositionRanking',
         component: () => import('@/views/Information/PositionRanking.vue')
       },
       {
-        path: 'infor/votingStatistics',
+        path: 'votingStatistics',
         name: 'VotingStatistics',
         component: () => import('@/views/Information/VotingStatistics.vue')
       },

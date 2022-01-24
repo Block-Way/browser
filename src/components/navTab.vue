@@ -46,14 +46,14 @@ export default {
         title: 'Staking',
         url: '/staking'
       }, {
-        title: 'Transactions',
-        url: '/transactions'
+        title: 'Blocks',
+        url: '/blockStatistics'
       }, {
-        title: 'Assets',
-        url: '/assets'
+        title: 'PositionRanking',
+        url: '/positionRanking'
       }, {
-        title: 'Gov',
-        url: '/gov'
+        title: 'VotingStatistics',
+        url: '/votingStatistics'
       }],
       currentTab: 0,
       options: [{
