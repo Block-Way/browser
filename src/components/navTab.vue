@@ -40,15 +40,20 @@ export default {
   data() {
     return {
       tabsItemList: [{
-        title: 'Dashboard'
+        title: 'Dashboard',
+        url: '/home'
       }, {
-        title: 'Staking'
+        title: 'Staking',
+        url: '/staking'
       }, {
-        title: 'Transactions'
+        title: 'Blocks',
+        url: '/blockStatistics'
       }, {
-        title: 'Assets'
+        title: 'PositionRanking',
+        url: '/positionRanking'
       }, {
-        title: 'Gov'
+        title: 'NetworkInformation',
+        url: '/networkInformation'
       }],
       currentTab: 0,
       options: [{
@@ -67,7 +72,8 @@ export default {
   methods: {
     clickTabsItem(item, index) {
       this.currentTab = index
-      this.emit('clickTabsItem', this.currentTab)
+      // this.$emit('clickTabsItem', this.currentTab)
+      this.$router.push(item.url)
     }
   }
 }
@@ -81,9 +87,8 @@ export default {
   background: #424958;
   display: flex;
   justify-content: center;
-  padding: 20px 0;
+  // padding: 20px 0;
   z-index: 999;
-
   .content {
     display: flex;
     width: 80%;
@@ -95,10 +100,12 @@ export default {
       color: #fff;
       display: flex;
       align-items: center;
-
       &-logo {
-        // width: 183px;
-
+        display: flex;
+        align-items: center;
+        h3 {
+          text-indent: 10px;
+        }
       }
 
       &-tabs {
