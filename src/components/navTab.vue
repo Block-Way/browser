@@ -22,9 +22,9 @@
           </el-select>
         </div>
         <div class="content-right-search-input">
-          <input type="text" placeholder="Enter Search Value">
+          <input type="text" v-model="message" placeholder="Enter Search Value">
         </div>
-        <div class="content-right-search-icon icon iconfont icon-search1"></div>
+        <div class="content-right-search-icon icon iconfont icon-search1" @click="goto()"></div>
       </div>
     </div>
   </div>
@@ -66,7 +66,8 @@ export default {
           value: 'Address',
           label: 'Address'
         }],
-        value: ''
+        value: '',
+        message: ''
     }
   },
   methods: {
@@ -74,6 +75,30 @@ export default {
       this.currentTab = index
       // this.$emit('clickTabsItem', this.currentTab)
       this.$router.push(item.url)
+    },
+    goto() {
+      if (this.value === 'Block') {
+        this.$router.push({
+            path: '/details/blockDetails',
+            query: {
+            hash: this.message
+          }
+        });
+      } else if (this.value === 'Tx') {
+         this.$router.push({
+            path: '/details/transDetails',
+            query: {
+            txid: this.message
+          }
+        });
+      } else if (this.value === 'Address') {
+          this.$router.push({
+            path: '/details/AddressDetails',
+            query: {
+            addr: this.message
+          }
+        });
+      }
     }
   }
 }

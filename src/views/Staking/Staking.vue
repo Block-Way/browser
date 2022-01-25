@@ -50,12 +50,10 @@ export default {
     
   methods: {
     AddrDetails(address) {
-      console.log("hello", address);
-      /*
       this.$router.push({
         path: '/details/AddressDetails',
-        query: { "addr": addr }
-      })*/
+        query: { "addr": address }
+      })
     },
     fetchStakingData() {
       listdelegate().then(res => {

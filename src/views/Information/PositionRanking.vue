@@ -2,13 +2,13 @@
 <div class="staking">
   <div class="module">
     <el-table :data="tableData" style="width: 100%" highlight-current-row>
-      <el-table-column prop="rank" label="排名">
+      <el-table-column prop="rank" label="rank">
       </el-table-column>
-      <el-table-column prop="address" label="地址">
+      <el-table-column prop="address" label="address">
       </el-table-column>
-      <el-table-column prop="number" label="数量">
+      <el-table-column prop="number" label="quantity">
       </el-table-column>
-      <el-table-column prop="rate" label="占有百分比">
+      <el-table-column prop="rate" label="Occupancy percentage">
         </el-table-column>
     </el-table>
     <!--

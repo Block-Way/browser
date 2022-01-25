@@ -28,7 +28,6 @@
 
           </div>
         <div class="module-content-item module-content-right">
-         
           <div class="content-item">
             <div class="item-title">Hash</div>
             <div class="item-word" :style="index === 0 ? 'color: skyblue;' : ''">{{block.hash}}</div>
