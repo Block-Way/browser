@@ -5,7 +5,7 @@
       <second-title :itemList="secondItemList" />
     </div>
     <el-table :data="tableData" style="width: 100%" highlight-current-row>
-      <el-table-column prop="address" label="Address">
+      <el-table-column prop="address" label="Address"  @click="AddrDetails()">
       </el-table-column>
       <el-table-column prop="votes" label="Votes">
       </el-table-column>
@@ -44,7 +44,16 @@ export default {
   mounted() {
     this.fetchStakingData()
   },
+    
   methods: {
+    AddrDetails() {
+      console.log("hello");
+      /*
+      this.$router.push({
+        path: '/details/AddressDetails',
+        query: { "addr": addr }
+      })*/
+    },
     fetchStakingData() {
       listdelegate().then(res => {
         let dataArr = []

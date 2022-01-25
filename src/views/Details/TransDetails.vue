@@ -108,14 +108,14 @@ export default {
     BlockDetails(hash) {
       console.log('click');
       this.$router.push({
-        path: '/blockDetails',
+        path: '/details/blockDetails',
         query: { "hash": hash }
       })
     },
     TransDetails(txid) {
       console.log('click');
       this.$router.push({
-        path: '/TransDetails',
+        path: '/details/TransDetails',
         query: { "txid": txid }
       })
     }
