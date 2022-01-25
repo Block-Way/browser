@@ -5,7 +5,10 @@
       <second-title :itemList="secondItemList" />
     </div>
     <el-table :data="tableData" style="width: 100%" highlight-current-row>
-      <el-table-column prop="address" label="Address"  @click="AddrDetails()">
+      <el-table-column label="Address">
+        <template #default="scope">
+          <span @click="AddrDetails(scope.row.address)">{{scope.row.address}}</span>
+        </template>
       </el-table-column>
       <el-table-column prop="votes" label="Votes">
       </el-table-column>
@@ -46,8 +49,8 @@ export default {
   },
     
   methods: {
-    AddrDetails() {
-      console.log("hello");
+    AddrDetails(address) {
+      console.log("hello", address);
       /*
       this.$router.push({
         path: '/details/AddressDetails',
