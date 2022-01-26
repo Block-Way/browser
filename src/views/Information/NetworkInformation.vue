@@ -75,7 +75,6 @@
       </div>
     </div>
   </div>
-  <page-bottom></page-bottom>
 </div>
 </template>
 
@@ -93,7 +92,6 @@ import {
 export default {
   components: {
     NavTab,
-    pageBottom,
     pagination
   },
   data() {

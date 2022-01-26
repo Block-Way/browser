@@ -28,7 +28,6 @@
 
           </div>
         <div class="module-content-item module-content-right">
-         
           <div class="content-item">
             <div class="item-title">Hash</div>
             <div class="item-word" :style="index === 0 ? 'color: skyblue;' : ''">{{block.hash}}</div>
@@ -71,7 +70,6 @@
       </div>
     </div>
   </div>
-  <page-bottom></page-bottom>
 </div>
 </template>
 
@@ -121,14 +119,14 @@ export default {
     BlockDetails(hash) {
       console.log('click');
       this.$router.push({
-        path: '/blockDetails',
+        path: '/details/blockDetails',
         query: { "hash": hash }
       })
     },
     TransDetails(txid) {
       console.log('click');
       this.$router.push({
-        path: '/TransDetails',
+        path: '/details/TransDetails',
         query: { "txid": txid }
       })
     }

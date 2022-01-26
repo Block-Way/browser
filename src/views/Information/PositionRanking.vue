@@ -2,13 +2,16 @@
 <div class="staking">
   <div class="module">
     <el-table :data="tableData" style="width: 100%" highlight-current-row>
-      <el-table-column prop="rank" label="排名">
+      <el-table-column prop="rank" label="rank" min-width="15%">
       </el-table-column>
-      <el-table-column prop="address" label="地址">
+      <el-table-column prop="address" label="address" min-width="35%">
+         <template #default="scope">
+          <span @click="AddrDetails(scope.row.address)">{{scope.row.address}}</span>
+        </template>
       </el-table-column>
-      <el-table-column prop="number" label="数量">
+      <el-table-column prop="number" label="quantity" min-width="25%">
       </el-table-column>
-      <el-table-column prop="rate" label="占有百分比">
+      <el-table-column prop="rate" label="Occupancy percentage" min-width="25%">
         </el-table-column>
     </el-table>
     <!--
@@ -74,6 +77,12 @@ export default {
       });
   },
   methods: {
+    AddrDetails(address) {
+      this.$router.push({
+        path: '/details/AddressDetails',
+        query: { "addr": address }
+      })
+    },
     handleSizeChange(val) {
         console.log(`每页 ${val} 条`);
       },
@@ -92,7 +101,7 @@ export default {
   min-height: 100vh;
 }
 .module {
-  width: 90%;
+  width: 76%;
   background: #fff;
   border-radius: 2px;
   padding: 10px;

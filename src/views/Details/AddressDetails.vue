@@ -1,83 +1,59 @@
 <template>
 <div class="container">
-  <!-- <nav-tab @clickTabsItem="clickTabsItem"></nav-tab> -->
   <div class="content">
     <div class="module">
       <div class="module-title">
-        Block basic information
+        Address information
       </div>
       <div class="address-top">
-        <div class="address-title">地址</div>
-        <div class="address-word">{{block.height}}</div>
+        <div class="address-title">address</div>
+        <div class="address-word">{{user.address}}</div>
       </div>
       <div class="module-content">
-        
         <div class="module-content-item module-content-left">
-          <!-- <div class="content-item">
-            <div class="item-title">地址</div>
-            <div class="item-word">{{block.height}}</div>
-          </div> -->
           <div class="content-item" >
-            <div class="item-title">可用余额</div>
-            <div class="item-word">{{block.type}}</div>
+            <div class="item-title">balance</div>
+            <div class="item-word">{{user.avail}}</div>
           </div>
-
           <div class="content-item" >
-            <div class="item-title">投票锁定</div>
-            <div class="item-word">{{block.reward_money}}</div>
+            <div class="item-title">nonce</div>
+            <div class="item-word">{{user.nonce}}</div>
           </div>
-
-          <!-- <div class="content-item" >
-            <div class="item-title">Transactions</div>
-            <div class="item-word">{{block.txs}}</div>
-          </div> -->
-
           </div>
         <div class="module-content-item module-content-right">
-         
           <div class="content-item">
-            <div class="item-title">总接收</div>
-            <div class="item-word" :style="index === 0 ? 'color: skyblue;' : ''">{{block.hash}}</div>
-          </div>
-
-          <div class="content-item">
-            <div class="item-title">总发送</div>
-            <div class="item-word" :style="index === 0 ? 'color: skyblue;' : ''">{{block.time}}</div>
-          </div>
-
-          <!-- <div class="content-item">
-            <div class="item-title">reward_address</div>
-            <div class="item-word" :style="index === 0 ? 'color: skyblue;' : ''">{{block.reward_address}}</div>
+            <div class="item-title">Locked amount</div>
+            <div class="item-word">{{user.locked}}</div>
           </div>
           <div class="content-item">
-            <div class="item-title">prev_hash</div>
-            <div class="item-word" :style="index === 0 ? 'color: skyblue;' : ''" @click="BlockDetails(block.prev_hash)">{{block.prev_hash}}</div>
-          </div> -->
+            <div class="item-title">Unrecognized contract transactions recorded</div>
+            <div class="item-word">{{user.unconfirmedin}}</div>
+          </div>
         </div>
       </div>
 
        <div class="table">
-        <div class="table-item" v-for="(item, index) in 4" :key="index">
+        <div class="table-item" v-for="(item, index) in txs" :key="index">
             <div class="module-title" style="margin-top: 20px;" @click="TransDetails(item.txid)">
               Transaction 
             </div>
             <div class="transaction-infor">
-              <div class="coinbse">
-                Coinbse
+              <div class="coinbse" v-if="item.from=='000000000000000000000000000000000000000000000000000000000'"> 
+                coinbse
               </div>
-              <!-- <div>
+              <div class="coinbse" v-else @click="AddrDetails(item.from)"> 
                 {{item.from}}
-              </div> -->
-            <div class="number">100.0000</div>
+              </div>
+              
+            <div class="number">{{item.fee}}</div>
             <div class="right icon iconfont icon-arrow-right1"></div>
-            <div class="address">afsdfsdfasdfdsfawefadxsa</div>
-            <div class="number">100.0000</div>
+            <div class="address" @click="AddrDetails(item.to)" >{{item.to}}</div>
+            <div class="number">{{item.amount}}</div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <page-bottom></page-bottom>
 </div>
 </template>
 
@@ -87,7 +63,7 @@ import NavTab from '@/components/navTab'
 import pageBottom from '@/components/pageBottom'
 import pagination from 'element-plus'
 import {
-  getblock,getblocktx
+  get_address,get_address_tx
 } from "@/api/universal";
 
 export default {
@@ -98,43 +74,45 @@ export default {
   },
   data() {
     return {
-      block: {
-        prev_hash: 5,
-        time: 5,
-        height: 4,
-        reward_address:1,
-        reward_money:1,
-        type:"primary-dpos",
-        txs:3
+      user: {
+        address: "??",
+        avail: 0,
+        nonce: 0,
+        locked :0,
+        unconfirmedin:0,
+        unconfirmedout:0,
       },
-      blocktx :[]
+      txs :[]
     }
   },
   mounted() {
-     getblock(this.$route.query.hash).then(res => {
-        this.block = res[0];
-        this.block.time = moment.unix(this.block.time).format('yyyy-MM-DD HH:mm:ss')
-      }).catch(error => {
-        console.log(error);
-      });
-    getblocktx(this.$route.query.hash).then(res => {
-        this.blocktx = res;
-      }).catch(error => {
-        console.log(error);
-      });
+    get_address(this.$route.query.addr).then(res => {
+      this.user = res[0];
+    }).catch(error => {
+      console.log(error);
+    });
+    get_address_tx(this.$route.query.addr).then(res => {
+      this.txs = res;
+    }).catch(error => {
+      console.log(error);
+    });
   },
   methods: {
-    BlockDetails(hash) {
-      console.log('click');
+    AddrDetails(address) {
       this.$router.push({
-        path: '/blockDetails',
+        path: '/details/AddressDetails',
+        query: { "addr": address }
+      })
+    },
+    BlockDetails(hash) {
+      this.$router.push({
+        path: '/details/blockDetails',
         query: { "hash": hash }
       })
     },
     TransDetails(txid) {
-      console.log('click');
       this.$router.push({
-        path: '/TransDetails',
+        path: '/details/TransDetails',
         query: { "txid": txid }
       })
     }

@@ -10,17 +10,16 @@
       end-placeholder="结束日期"
       :default-time="['12:00:00', '08:00:00']">
     </el-date-picker>-->
-    
     <el-table :data="tableData" style="width: 100%" highlight-current-row>
-      <el-table-column prop="time" label="日期">
+      <el-table-column prop="time" label="date">
       </el-table-column>
-      <el-table-column prop="number" label="出块数量">
+      <el-table-column prop="number" label="Number of blocks">
       </el-table-column>
-      <el-table-column prop="pow" label="PoW出块">
+      <el-table-column prop="pow" label="Number of pow blocks">
       </el-table-column>
-      <el-table-column prop="dpos" label="DPoS出块">
+      <el-table-column prop="dpos" label="Number of dpos blocks">
       </el-table-column>
-      <el-table-column prop="reward_money" label="奖励数量">
+      <el-table-column prop="reward_money" label="Number of awards">
       </el-table-column>
     </el-table>
     <br /><br />
@@ -104,7 +103,7 @@ export default {
   min-height: 100vh;
 }
 .module {
-  width: 90%;
+  width: 76%;
   background: #fff;
   border-radius: 2px;
   padding: 10px;
