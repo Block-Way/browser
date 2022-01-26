@@ -75,13 +75,12 @@
       </div>
     </div>
   </div>
-  <page-bottom></page-bottom>
 </div>
 </template>
 
 <script>
 import moment from 'moment'
-import NavTab from '@/components/navTab'
+//import NavTab from '@/components/navTab'
 import pageBottom from '@/components/pageBottom'
 import pagination from 'element-plus'
 import {
@@ -92,8 +91,7 @@ import {
 } from "@/api/staking";
 export default {
   components: {
-    NavTab,
-    pageBottom,
+    //NavTab,
     pagination
   },
   data() {
@@ -171,7 +169,7 @@ export default {
 .container {
   .content {
     background: 100%;
-    min-height: 90vh;
+    min-height: 82vh;
     background: #000;
     padding-top: 20px;
 

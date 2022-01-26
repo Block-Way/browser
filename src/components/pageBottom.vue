@@ -24,9 +24,9 @@ export default {
     padding: 20px 0;
     display: flex;
     justify-content: center;
-    position: fixed;
+    //position: fixed;
     bottom: 0;
-    z-index: 999;
+    //z-index: 999;
     .content {
       width: 87%;
       display: flex;

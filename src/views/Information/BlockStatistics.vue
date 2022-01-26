@@ -102,10 +102,10 @@ export default {
   background: #000;
   width: 100%;
   padding-bottom: 100px;
-  min-height: 100vh;
+  min-height: 72vh;
 }
 .module {
-  width: 90%;
+  width: 76%;
   background: #fff;
   border-radius: 2px;
   padding: 10px;

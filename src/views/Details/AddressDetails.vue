@@ -38,19 +38,22 @@
               Transaction 
             </div>
             <div class="transaction-infor">
-              <div>
+              <div class="coinbse" v-if="item.from=='000000000000000000000000000000000000000000000000000000000'"> 
+                coinbse
+              </div>
+              <div class="coinbse" v-else @click="AddrDetails(item.from)"> 
                 {{item.from}}
               </div>
+              
             <div class="number">{{item.fee}}</div>
             <div class="right icon iconfont icon-arrow-right1"></div>
-            <div class="address">{{item.to}}</div>
+            <div class="address" @click="AddrDetails(item.to)" >{{item.to}}</div>
             <div class="number">{{item.amount}}</div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <page-bottom></page-bottom>
 </div>
 </template>
 
@@ -95,15 +98,19 @@ export default {
     });
   },
   methods: {
+    AddrDetails(address) {
+      this.$router.push({
+        path: '/details/AddressDetails',
+        query: { "addr": address }
+      })
+    },
     BlockDetails(hash) {
-      console.log('click');
       this.$router.push({
         path: '/details/blockDetails',
         query: { "hash": hash }
       })
     },
     TransDetails(txid) {
-      console.log('click');
       this.$router.push({
         path: '/details/TransDetails',
         query: { "txid": txid }
@@ -117,7 +124,7 @@ export default {
 .container {
   .content {
     background: 100%;
-    min-height: 90vh;
+    min-height: 82vh;
     background: #000;
     padding-top: 20px;
 

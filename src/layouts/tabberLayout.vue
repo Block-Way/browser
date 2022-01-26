@@ -4,7 +4,7 @@
     <nav-tab></nav-tab>
   </div>
   <div class="content">
-    <router-view />
+    <router-view  :key='$route.fullPath' />
   </div>
   <page-bottom></page-bottom>
 </div>

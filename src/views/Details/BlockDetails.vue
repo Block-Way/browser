@@ -70,7 +70,6 @@
       </div>
     </div>
   </div>
-  <page-bottom></page-bottom>
 </div>
 </template>
 
@@ -139,7 +138,7 @@ export default {
 .container {
   .content {
     background: 100%;
-    min-height: 90vh;
+    min-height: 82vh;
     background: #000;
     padding-top: 20px;
 
