@@ -1,92 +1,118 @@
 <template>
-<div class="container">
-  <div class="content">
-    <div class="module">
-      <div class="module-title">
-        Block basic information
-      </div>
-      <div class="module-content">
-        <div class="module-content-item module-content-left">
-          <div class="content-item" >
-            <div class="item-title">height</div>
-            <div class="item-word">{{block.height}}</div>
-          </div>
-          <div class="content-item" >
-            <div class="item-title">type</div>
-            <div class="item-word">{{block.type}}</div>
-          </div>
+  <div class="container">
+    <div class="content">
+      <div class="module">
+        <div class="module-title" style="none">Block basic information</div>
+        <div class="module-content">
+          <div class="module-content-item module-content-left">
+            <div class="content-item">
+              <div class="item-title">height</div>
+              <div class="item-word">{{ block.height }}</div>
+            </div>
+            <div class="content-item">
+              <div class="item-title">type</div>
+              <div class="item-word">{{ block.type }}</div>
+            </div>
 
-          <div class="content-item" >
-            <div class="item-title">reward_money</div>
-            <div class="item-word">{{block.reward_money}}</div>
-          </div>
+            <div class="content-item">
+              <div class="item-title">reward_money</div>
+              <div class="item-word">{{ block.reward_money }}</div>
+            </div>
 
-          <div class="content-item" >
-            <div class="item-title">Transactions</div>
-            <div class="item-word">{{block.txs}}</div>
+            <div class="content-item">
+              <div class="item-title">Transactions</div>
+              <div class="item-word">{{ block.txs }}</div>
+            </div>
           </div>
+          <div class="module-content-item module-content-right">
+            <div class="content-item">
+              <div class="item-title">Hash</div>
+              <div
+                class="item-word"
+                :style="index === 0 ? 'color: skyblue;' : ''"
+              >
+                {{ block.hash }}
+              </div>
+            </div>
 
-          </div>
-        <div class="module-content-item module-content-right">
-          <div class="content-item">
-            <div class="item-title">Hash</div>
-            <div class="item-word" :style="index === 0 ? 'color: skyblue;' : ''">{{block.hash}}</div>
-          </div>
+            <div class="content-item">
+              <div class="item-title">Time</div>
+              <div
+                class="item-word"
+                :style="index === 0 ? 'color: skyblue;' : ''"
+              >
+                {{ block.time }}
+              </div>
+            </div>
 
-          <div class="content-item">
-            <div class="item-title">Time</div>
-            <div class="item-word" :style="index === 0 ? 'color: skyblue;' : ''">{{block.time}}</div>
-          </div>
-
-          <div class="content-item">
-            <div class="item-title">reward_address</div>
-            <div class="item-word" :style="index === 0 ? 'color: skyblue;' : ''">{{block.reward_address}}</div>
-          </div>
-          <div class="content-item">
-            <div class="item-title">prev_hash</div>
-            <div class="item-word" :style="index === 0 ? 'color: skyblue;' : ''" @click="BlockDetails(block.prev_hash)">{{block.prev_hash}}</div>
+            <div class="content-item">
+              <div class="item-title">reward_address</div>
+              <div
+                class="item-word"
+                :style="index === 0 ? 'color: skyblue;' : ''"
+              >
+                {{ block.reward_address }}
+              </div>
+            </div>
+            <div class="content-item">
+              <div class="item-title">prev_hash</div>
+              <div
+                class="item-word"
+                :style="index === 0 ? 'color: skyblue;' : ''"
+                @click="BlockDetails(block.prev_hash)"
+              >
+                {{ block.prev_hash }}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-       <div class="table">
-        <div class="table-item" v-for="(item, index) in blocktx" :key="index">
-            <div class="module-title" style="margin-top: 20px;" @click="TransDetails(item.txid)">
-              Transaction {{index+1}} {{item.txid}}
+        <div class="table">
+          <div class="table-item" v-for="(item, index) in blocktx" :key="index">
+            <div
+              class="module-title"
+              style="margin-top: 20px; border:"
+              @click="TransDetails(item.txid)"
+            >
+              Transaction {{ index + 1 }} {{ item.txid }}
             </div>
             <div class="transaction-infor">
-              <div class="coinbse" v-if="item.from==='000000000000000000000000000000000000000000000000000000000'" >
+              <div
+                class="coinbse"
+                v-if="
+                  item.from ===
+                  '000000000000000000000000000000000000000000000000000000000'
+                "
+              >
                 Coinbse
               </div>
               <div v-else>
-                {{item.from}}
+                {{ item.from }}
               </div>
-            <div class="number">{{item.fee}}</div>
-            <div class="right icon iconfont icon-arrow-right1"></div>
-            <div class="address">{{item.to}}</div>
-            <div class="number">{{item.amount}}</div>
+              <div class="number">{{ item.fee }}</div>
+              <div class="right icon iconfont icon-arrow-right1"></div>
+              <div class="address">{{ item.to }}</div>
+              <div class="number">{{ item.amount }}</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
-import moment from 'moment'
-import NavTab from '@/components/navTab'
-import pageBottom from '@/components/pageBottom'
-import pagination from 'element-plus'
-import {
-  getblock,getblocktx
-} from "@/api/universal";
+import moment from "moment";
+import NavTab from "@/components/navTab";
+import pageBottom from "@/components/pageBottom";
+import pagination from "element-plus";
+import { getblock, getblocktx } from "@/api/universal";
 
 export default {
   components: {
     NavTab,
     pageBottom,
-    pagination
+    pagination,
   },
   data() {
     return {
@@ -94,68 +120,81 @@ export default {
         prev_hash: 5,
         time: 5,
         height: 4,
-        reward_address:1,
-        reward_money:1,
-        type:"primary-dpos",
-        txs:3
+        reward_address: 1,
+        reward_money: 1,
+        type: "primary-dpos",
+        txs: 3,
       },
-      blocktx :[]
-    }
+      blocktx: [],
+    };
   },
   mounted() {
-     getblock(this.$route.query.hash).then(res => {
+    getblock(this.$route.query.hash)
+      .then((res) => {
         this.block = res[0];
-        this.block.time = moment.unix(this.block.time).format('yyyy-MM-DD HH:mm:ss')
-      }).catch(error => {
+        this.block.time = moment
+          .unix(this.block.time)
+          .format("yyyy-MM-DD HH:mm:ss");
+      })
+      .catch((error) => {
         console.log(error);
       });
-    getblocktx(this.$route.query.hash).then(res => {
+    getblocktx(this.$route.query.hash)
+      .then((res) => {
         this.blocktx = res;
-      }).catch(error => {
+      })
+      .catch((error) => {
         console.log(error);
       });
   },
   methods: {
     BlockDetails(hash) {
-      console.log('click');
+      console.log("click");
       this.$router.push({
-        path: '/details/blockDetails',
-        query: { "hash": hash }
-      })
+        path: "/details/blockDetails",
+        query: { hash: hash },
+      });
     },
     TransDetails(txid) {
-      console.log('click');
+      console.log("click");
       this.$router.push({
-        path: '/details/TransDetails',
-        query: { "txid": txid }
-      })
-    }
-  }
-}
+        path: "/details/TransDetails",
+        query: { txid: txid },
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .container {
   .content {
     background: 100%;
-    min-height: 82vh;
-    background: #000;
-    padding-top: 20px;
+    min-height: 79vh;
+    // background: #000;
+    // padding-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
 
     .module {
-      width: 76%;
+      width: 78%;
       background: #fff;
       border-radius: 2px;
-      padding: 10px;
+      padding: 20px;
       margin: 0 auto;
-
+      box-shadow:0 1px 4px rgba(0, 0, 0, 0.3);
+      float: left;
       &-title {
-        border-left: 3px solid #424958;
-        text-indent: 13px;
+        border-left: 2px solid #424958;
+        text-indent: 6px;
         color: #424958;
         font-size: 16px;
         font-weight: 700;
         margin-bottom: 20px;
+        height: 20px;
+        line-height: 20px;
       }
 
       &-content {

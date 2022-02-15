@@ -95,17 +95,18 @@ export default {
 
 <style lang="scss" scoped>
 .staking {
-  background: #000;
+  // background: #000;
   width: 100%;
   padding-bottom: 100px;
   min-height: 100vh;
 }
 .module {
-  width: 76%;
+ width: 78%;
   background: #fff;
   border-radius: 2px;
   padding: 10px;
   margin: 0 auto;
   margin-top: 20px;
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3);
 }
 </style>

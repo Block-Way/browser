@@ -495,7 +495,7 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  background: #000;
+  // background: #000;
   width: 100%;
   padding-bottom: 100px;
   min-height: 100vh;
@@ -506,7 +506,7 @@ export default {
 }
 
 .module {
-  width: 76%;
+  width: 78%;
   background: #fff;
   border-radius: 2px;
   padding: 10px;
@@ -515,6 +515,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: #333;
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3);
 
   &-title {
     display: flex;
@@ -556,7 +558,7 @@ export default {
   }
 
   &-left {
-    border-right: 2px solid gray;
+    border-right: 1px solid gainsboro;
   }
 
 }

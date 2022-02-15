@@ -125,18 +125,18 @@ export default {
   .content {
     background: 100%;
     min-height: 82vh;
-    background: #000;
     padding-top: 20px;
 
     .module {
-      width: 76%;
-      background: #fff;
+     width: 78%;
+      // background: #fff;
       border-radius: 2px;
-      padding: 10px;
+      padding: 20px;
       margin: 0 auto;
+      box-shadow:0 1px 4px rgba(0, 0, 0, 0.3);
 
       &-title {
-        border-left: 3px solid #424958;
+        border-left: 2px solid #424958;
         text-indent: 13px;
         color: #424958;
         font-size: 16px;

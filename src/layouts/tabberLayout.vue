@@ -33,6 +33,6 @@ export default {
 .content {
   border: 1px solid #000;
   // padding-top: 20px;
-  background: #000;
+  // background: #000;
 }
 </style>

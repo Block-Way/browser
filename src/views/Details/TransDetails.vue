@@ -152,7 +152,7 @@ export default {
   .content {
     background: 100%;
     min-height: 82vh;
-    background: #000;
+    // background: #000;
     padding-top: 20px;
 
     .module {
