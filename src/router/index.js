@@ -1,73 +1,53 @@
-import { createRouter, createWebHistory } from 'vue-router'
-// import Home from '@/views/Home/Home.vue'
-import NabTab from '@/layouts/tabberLayout.vue'
-const routes = [
-  {
-    path: '/',
-    name: 'tab',
-    redirect: { name: 'Home' },
-    component: NabTab,
-    children: [
-      //首页大模块
-      {
-        path: 'home',
-        name: 'Home',
-        component: () => import('@/views/Home/Home.vue')
-      },
-      {
-        path: 'about',
-        name: 'About',
-        component: () => import('@/views/About/About.vue')
-      },
-      {
-        path: 'staking',
-        name: 'Staking',
-        component: () => import('@/views/Staking/Staking.vue')
-      },
-      //区块详情
-      {
-        path: 'details/blockDetails',
-        name: 'BlockDetails',
-        component: () => import('@/views/Details/BlockDetails.vue')
-      },
-      {
-        path: 'details/transDetails',
-        name: 'TransDetails',
-        component: () => import('@/views/Details/TransDetails.vue')
-      },
-      {
-        path: 'details/addressDetails',
-        name: 'AddressDetails',
-        component: () => import('@/views/Details/AddressDetails.vue')
-      },
-      //区块信息
-      {
-        path: 'infor/blockInfor',
-        name: 'BlockInfor',
-        component: () => import('@/views/Information/BlockInfor.vue')
-      },
-      {
-        path: 'blockStatistics',
-        name: 'BlockStatistics',
-        component: () => import('@/views/Information/BlockStatistics.vue')
-      },
-      {
-        path: 'positionRanking',
-        name: 'PositionRanking',
-        component: () => import('@/views/Information/PositionRanking.vue')
-      },
-      {
-        path: 'networkInformation',
-        name: 'NetworkInformation',
-        component: () => import('@/views/Information/NetworkInformation.vue')
-      },
-    ]
-  }
-]
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import routes from './routes';
 
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
+Vue.use(VueRouter)
+
+const router = new VueRouter({
+    mode: "history",
+    routes
+})
+
+//设置全局守卫处理
+router.beforeEach((to, from, next) => {
+    let isLogin = localStorage.getItem("token");
+
+    // 如果访问的是登录界面则直接放行
+    /*if (to.path === '/login')
+        return next()
+
+    // 如果访问的是登录界面则直接放行
+    if (to.path === '/stafflogin')
+        return next()*/
+
+
+    if (to.meta.title) {
+        document.title = to.meta.title;
+    }
+    if (to.matched.length === 0) {
+        next("/")
+    }
+    if (to.meta.needLogin) {
+        if (isLogin) {
+            next()
+        } else if (to.meta.routerType && to.meta.routerType == "staff") {
+            next({
+                "path": 'stafflogin',
+                query: {
+                    redirect: to.fullPath
+                }
+            })
+        } else {
+            next({
+                "path": 'login',
+                query: {
+                    redirect: to.fullPath
+                }
+            })
+        }
+    }
+    next();
 })
 
 export default router
