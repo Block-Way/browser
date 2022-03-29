@@ -13,8 +13,8 @@
         </div>
 
         <div class="header_wrap btc">
-            <div class="box"><a href="cn/index.html" data-tracking="coins-header-home"
-                                alt="浏览器可查询链上的所有所有信息包括最新爆块，最新交易信息等，区块内的交易等等" title="MNT浏览器">
+            <div class="box"><a href="/" data-tracking="coins-header-home"
+                                alt="浏览器可查询链上的所有所有信息包括最新爆块，最新交易信息等，区块内的交易等等" title="HAH浏览器">
                 <div class="order">
                     <div class="menu icon-menu"></div>
                     <img src="../../assets/images/icon/hah.png" alt="区块链浏览器" class="coinlogo">
@@ -36,7 +36,7 @@
 
 
         <div class="mobile_header">
-            <div class="head_menu"><a href="cn/index.html" data-tracking="coins-header-home">
+            <div class="head_menu"><a href="/" data-tracking="coins-header-home">
                 <div class="coin_name"><img src="../../assets/images/icon/hah.png" alt="" class="icon">
                     HAH 浏览器
                     <!----></div>

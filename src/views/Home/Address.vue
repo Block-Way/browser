@@ -172,6 +172,16 @@
                     that.total = res.data.total
                 });
             },
+
+            handleSizeChange(newSzie) {
+                this.pageSize = newSzie
+                this.getList()
+            },
+            handleCurrentChange(newPage) {
+                this.pagenum = newPage
+                this.getList()
+            },
+
             timeformat(obj){
                 if (obj == null) {
                     return null
