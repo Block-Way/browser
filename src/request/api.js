@@ -29,4 +29,9 @@ export default {
     address(params) {
         return basePost("/address/", params);
     },
+    listdelegate(params) {
+        return baseGet("/listdelegate/", params);
+    }
+
+    
 }

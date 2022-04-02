@@ -81,7 +81,18 @@ const routes = [
                     title: "区块链浏览器-排行"
                 },
                 component: () => import("../views/Home/Rank.vue")
+            },
+            {
+                path: "/dpos",
+                name: "dpos",
+                meta: {
+                    parent: "home",
+                    needLogin: false,
+                    title: "区块链浏览器-排行"
+                },
+                component: () => import("../views/Home/dpos.vue")
             }
+
         ]
     }
 ]

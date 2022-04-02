@@ -27,6 +27,8 @@
                             </li>
                             <li class="item active"><a href="rank" alt="" title="HAH浏览器" data-tracking="coins-header-home">富豪榜</a>
                             </li>
+                              <li class="item active"><a href="dpos" alt="" title="HAH浏览器" data-tracking="coins-header-home">dpos</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
