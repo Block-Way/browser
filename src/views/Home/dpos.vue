@@ -2,7 +2,7 @@
     <div>
         <div data-v-92014c5c="" data-v-520cdd27="" class="content-child"><h1 data-v-92014c5c="" class="h1">
            dpos pow</h1>
-            <h2 data-v-92014c5c="" class="h2">浏览器展示富豪榜，包括富豪排名，富豪地址和交易金额。</h2>
+            <h2 data-v-92014c5c="" class="h2">浏览器展示dpos，包括地址，投票和类型。</h2>
             <div data-v-92014c5c="" class="baseInfoCard">
                 <div data-v-92014c5c="" class="header">
                     <div data-v-92014c5c="" id="rich_list" class="btns">
@@ -24,8 +24,15 @@
                                         </li>
                                         <li data-v-18b505e9="" class="item" v-for="(item,index) in dposlistDatas" :key="index">
                                             <div data-v-18b505e9="" class="index dposeindex">{{ index+1}}</div>
-                                            <div data-v-18b505e9="" class="address">
-                                                <a data-v-18b505e9="" href="javascript:void(0)" class="hash">
+                                            <!--<div data-v-18b505e9="" class="address" :title="item.address">
+                                                <a data-v-18b505e9="" href="javascript:void(0)" @click="openTip(item.address)" class="hash">
+                                                    <span data-v-18b505e9="" class="el-tooltip" aria-describedby="el-tooltip-6004" tabindex="0">
+                                                        {{ item.address }}
+                                                    </span></a>
+
+                                            </div>-->
+                                            <div data-v-18b505e9="" class="address" :title="item.address">
+                                                <a data-v-18b505e9="" href="javascript:void(0)" @click="handleWindow(item.address)" class="hash">
                                                     <span data-v-18b505e9="" class="el-tooltip" aria-describedby="el-tooltip-6004" tabindex="0">
                                                         {{ item.address }}
                                                     </span></a>
@@ -70,17 +77,21 @@
                     </div>
                 </div><!----></div>
         </div>
-
+        <alert-tip v-if="showa" @closeTip="closeTip" :address="address"></alert-tip>
     </div>
+ 
 </template>
 
 
 <script>
+import alertTip from './modal.vue'
     export default {
         name: "dpos",
         data() {
             return {
-                dposlistDatas: []
+                dposlistDatas: [],
+                  showa:false,
+                  address:''
             }
         },
         methods: {
@@ -91,15 +102,33 @@
                 };
                 let that = this
                 this.$api.listdelegate(params).then(res => {
-                    that.dposlistDatas = res
-                  
+                    that.dposlistDatas = res                  
+                   
                 });
-            }
+            },
+            closeTip(){
+                this.showa=false
+            },
+              openTip(address){
+                this.address =address;
+                this.showa=true;
+                console.log(this.showa);
+              },
+             handleWindow(dposAddress) {                
+                var route = this.$router.resolve({
+                    name: 'dposDetail',
+                })               
+                sessionStorage.setItem("dposAddress", dposAddress);                
+                window.open(route.href, '_blank')
+                } 
 
          
         },
         created() {         
-            this.getList()           
+            this.getList()               
+        },
+          components: {
+            'alert-tip':alertTip
         }
     }
 </script>
@@ -108,4 +137,22 @@
     @import url("../../assets/css/app.css");
     @import url("../../assets/css/rank.css");
     @import url("../../assets/css/dpos.css");
+
+    h1, h2 {
+  font-weight: normal;
+}
+ 
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+ 
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+ 
+a {
+  color: #42b983;
+}
 </style>

@@ -31,7 +31,8 @@ export default {
     },
     listdelegate(params) {
         return baseGet("/listdelegate/", params);
+    },
+    listdelegatedetail(params) {
+        return baseGet("/listdelegatedetail/", params);
     }
-
-    
 }

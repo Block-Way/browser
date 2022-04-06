@@ -88,10 +88,31 @@ const routes = [
                 meta: {
                     parent: "home",
                     needLogin: false,
-                    title: "区块链浏览器-排行"
+                    title: "区块链浏览器-dpos"
                 },
                 component: () => import("../views/Home/dpos.vue")
-            }
+            },
+            {
+                path: "/main",
+                name: "main",
+                meta: {
+                    parent: "home",
+                    needLogin: false,
+                    title: "区块链浏览器-main"
+                },
+                component: () => import("../views/Home/main.vue")
+            },
+            {
+                path: "/dposDetail",
+                name: "dposDetail",
+                meta: {
+                    parent: "home",
+                    needLogin: false,
+                    title: "区块链浏览器-dposDetail"
+                },
+                component: () => import("../views/Home/dposDetail.vue")
+            },
+
 
         ]
     }
