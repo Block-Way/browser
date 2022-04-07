@@ -1,0 +1,11 @@
+.footer_wrap.cn {
+    position: fixed;
+    bottom: 0;
+    text-align:center;
+    color:white;
+}
+.fa-twitter{
+    width: 30px;    
+    vertical-align: middle;
+    padding-left: 10px;
+}
