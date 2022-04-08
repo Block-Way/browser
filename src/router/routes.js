@@ -91,8 +91,7 @@ const routes = [
                     title: "区块链浏览器-dpos"
                 },
                 component: () => import("../views/Home/dpos.vue")
-            },
-           
+            },           
             {
                 path: "/dposDetail",
                 name: "dposDetail",
@@ -102,7 +101,7 @@ const routes = [
                     title: "区块链浏览器-dposDetail"
                 },
                 component: () => import("../views/Home/dposDetail.vue")
-            },
+            }
            
           
         ]

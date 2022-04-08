@@ -109,7 +109,7 @@
 </template>
 
 <script>
-import alertTip from './modal.vue'
+ 
     export default {
         name: "dpos",
         data() {
@@ -163,10 +163,8 @@ import alertTip from './modal.vue'
         created() {
             this.dposAddress = sessionStorage.getItem("dposAddress")     
             this.getList()
-        },
-          components: {
-            'alert-tip':alertTip
         }
+        
     }
 </script>
 
