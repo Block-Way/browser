@@ -153,6 +153,6 @@ li {
 }
  
 a {
-  color: #2d8cf0;
+  color: #61259e;
 }
 </style>
