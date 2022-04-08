@@ -40,12 +40,20 @@
 
         <div class="mobile_header">
             <div class="head_menu"><a href="/" data-tracking="coins-header-home">
-                <div class="coin_name"><img src="../../assets/images/icon/hah.png" alt="" class="icon">
+                <!--<div class="coin_name"><img src="../../assets/images/icon/hah.png" alt="" class="icon">-->
+                   <div class="coin_name"><img src="../../assets/images/custom/logo.jpg" alt="" class="icon">          
+                    
                     HAH 浏览器
                     <!----></div>
             </a>
-                <div class="menu openmenu"></div>
+                <div :class="{'menu':true, 'openmenu':!openFlag, 'closemenu': openFlag}" @click="toggleMenu"></div>
             </div><!---->
+
+            <ul class="smallUl menu-card" v-if="openFlag">
+                <li class="item active"><a href="/" alt="" title="HAH浏览器" data-tracking="coins-header-home">首页</a></li>
+                <li class="item active"><a href="rank" alt="" title="HAH浏览器" data-tracking="coins-header-home">富豪榜</a></li>
+                <li class="item active"><a href="dpos" alt="" title="HAH浏览器" data-tracking="coins-header-home">dpos</a></li>
+            </ul>
         </div>
 
 
@@ -88,7 +96,9 @@
                     label: '交易'
                 }],
                 value: 1,
-                search_text:''
+                search_text:'',
+                openFlag: false,
+              
             }
         },
 
@@ -101,6 +111,10 @@
                 }else{
                     this.$router.push({ path: "tx", query: { txid: this.search_text } });
                 }
+            },
+            toggleMenu(){
+                this.openFlag =!this.openFlag
+   
             }
         },
 

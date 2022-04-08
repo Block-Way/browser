@@ -53,7 +53,7 @@
                                     <div data-v-18b505e9="" class="key">地址</div>
                                     <div data-v-18b505e9="" class="value">
                                         <div data-v-18b505e9="" class="address"><a data-v-18b505e9=""
-                                                                                   href="javascript:void(0)"
+                                                                                   href="javascript:void(0)" @click="handleWindow(item.address)"
                                                                                    class="hash">{{ item.address }}</a>
                                         </div>
                                     </div>
@@ -148,8 +148,7 @@ ul {
 }
  
 li {
-  display: inline-block;
-  
+
 }
  
 a {
