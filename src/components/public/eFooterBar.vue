@@ -138,9 +138,9 @@
             </div>
         </div> -->
 
-        <el-row :gutter="10">
-            <el-col :xs="0" :sm="0" :md="2" :lg="2" :xl="1"></el-col>
-            <el-col :xs="24" :sm="24" :md="5" :lg="5" :xl="1">
+        <el-row :gutter="20">
+
+            <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8">
                 <div>
                     <span>We are social</span>
                     <a href="javascript:void(0);" class="social">
@@ -155,7 +155,7 @@
                     
                 </div>
             </el-col>
-            <el-col :xs="24" :sm="24" :md="10" :lg="10" :xl="11">
+            <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="12">
                 <div>
                     <p class="text-center reset">
                     <a href="https://github.com/Block-Way/browser"  target="_blank"  class="btn btn-default btn-lg btn-gh">
@@ -165,7 +165,7 @@
                     </p>        
                 </div>
             </el-col>
-            <el-col :xs="24" :sm="24" :md="5" :lg="5" :xl="1">
+            <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8">
                 <div>
                     <p class="text-right">
                     Powered by <a href="https://blockway.io/"  target="_blank" >Block_Way Web Services</a><br>
@@ -173,7 +173,7 @@
                     </p>
                 </div>
             </el-col>
-            <el-col :xs="0" :sm="0" :md="2" :lg="2" :xl="1"></el-col>
+          
         </el-row>
     </div>
 
