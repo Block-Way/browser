@@ -34,4 +34,8 @@
     line-height: 30px;
     font-size: 18px;
 }
-
+#rich_list div{
+    width: 100%;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}

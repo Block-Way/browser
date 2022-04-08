@@ -5,7 +5,7 @@
             <h2 data-v-92014c5c="" class="h2">浏览器展示dpos明细</h2>
             <div data-v-92014c5c="" class="baseInfoCard">
                 <div data-v-92014c5c="" class="header">
-                    <div data-v-92014c5c="" id="rich_list" class="btns">
+                    <div data-v-92014c5c="" id="rich_list" class="btns" style="width:95%;">
                         <div data-v-92014c5c="" class="title ontitle">dpos 明细-- {{dposAddress}}</div>                   
                     </div>
                 </div>
