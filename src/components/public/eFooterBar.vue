@@ -171,7 +171,7 @@
                 <div>
                     <p class="text-right">
                     Powered by <a href="https://blockway.io/"  target="_blank" >Block_Way Web Services</a><br>
-                    © 2021 - BlockCypher
+                    © 2021 - Block_Way
                     </p>
                 </div>
             </el-col>
