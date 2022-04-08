@@ -112,7 +112,16 @@ const routes = [
                 },
                 component: () => import("../views/Home/dposDetail.vue")
             },
-
+            {
+                path: "/test",
+                name: "test",
+                meta: {
+                    parent: "home",
+                    needLogin: false,
+                    title: "区块链浏览器"
+                },
+                component: () => import("../views/Home/test.vue")
+            },
 
         ]
     }

@@ -150,7 +150,9 @@
                      <img src="../../assets/images/custom/facebook.png" class="fa fa-twitter">
                     </a>
                     <a href="https://github.com/Block-Way" target="_blank" class="social">                    
-                    <img src="../../assets/images/icon/hah.png" class="fa fa-twitter">
+                    <!--<img src="../../assets/images/icon/hah.png" class="fa fa-twitter">-->
+                    <img src="../../assets/images/custom/logo.jpg" class="fa fa-web">
+                    
                     </a>
                     
                 </div>
