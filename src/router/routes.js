@@ -92,16 +92,7 @@ const routes = [
                 },
                 component: () => import("../views/Home/dpos.vue")
             },
-            {
-                path: "/main",
-                name: "main",
-                meta: {
-                    parent: "home",
-                    needLogin: false,
-                    title: "区块链浏览器-main"
-                },
-                component: () => import("../views/Home/main.vue")
-            },
+           
             {
                 path: "/dposDetail",
                 name: "dposDetail",
