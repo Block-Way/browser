@@ -5,11 +5,11 @@
             <section data-v-4d10a54f="" class="section">
                 <div data-v-4d10a54f="" class="baseInfoCard">
                     <div data-v-4d10a54f="" class="header">
-                        <div data-v-4d10a54f="" class="title">区块信息</div>
+                        <div data-v-4d10a54f="" class="title">{{$t('Block.blockInfo')}}</div>
                         <a data-v-4d10a54f="" href="/cn/blocklist">
                             <div data-v-4d10a54f="" class="back">
 <!--                                <div data-v-4d10a54f="" class="backImg"></div>-->
-<!--                                <div data-v-4d10a54f="">返回爆块首页</div>-->
+<!--                                <div data-v-4d10a54f="">{{$t('Block.returnHome')}}</div>-->
                             </div>
                         </a></div>
                     <div data-v-4d10a54f="" class="content">
@@ -20,26 +20,26 @@
                             </div>
                         </div>
                         <div data-v-4d10a54f="" class="item">
-                            <div data-v-4d10a54f="" class="key">时间</div>
+                            <div data-v-4d10a54f="" class="key">{{$t('Block.time')}}</div>
                             <div data-v-4d10a54f="" class="value">{{ time }}</div>
                         </div>
                         <div data-v-4d10a54f="" class="item">
-                            <div data-v-4d10a54f="" class="key">交易数量</div>
+                            <div data-v-4d10a54f="" class="key">{{$t('Block.transactions')}}</div>
                             <div data-v-4d10a54f="" class="value">{{ txs }}</div>
                         </div>
                         <div data-v-4d10a54f="" class="item">
-                            <div data-v-4d10a54f="" class="key">上一区块</div>
+                            <div data-v-4d10a54f="" class="key">{{$t('Block.previousBlock')}}</div>
                             <div data-v-4d10a54f="" class="value">
 <!--                                {{ prev_hash  }}-->
                                 <router-link :to="{ name:'block',query:{hash:prev_hash } }">{{ prev_hash }}</router-link>
                                <!----></div>
                         </div>
                         <div data-v-4d10a54f="" class="item">
-                            <div data-v-4d10a54f="" class="key">播报方</div>
+                            <div data-v-4d10a54f="" class="key">{{$t('Block.address')}}</div>
                             <div data-v-4d10a54f="" class="value">{{ reward_address }}</div>
                         </div>
                         <div data-v-4d10a54f="" class="item">
-                            <div data-v-4d10a54f="" class="key">爆块奖励</div>
+                            <div data-v-4d10a54f="" class="key">{{$t('Block.reward')}}</div>
                             <div data-v-4d10a54f="" class="value">{{ reward_money }}</div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
 
                 <div data-v-1a6f007e="" class="baseInfoCard">
                     <div data-v-1a6f007e="" class="header">
-                        <div data-v-1a6f007e="" class="title">交易</div>
+                        <div data-v-1a6f007e="" class="title">{{$t('Block.tx')}}</div>
                     </div><!---->
 
 
@@ -59,11 +59,11 @@
                             <li data-v-bfa74ae2="" v-for="(item,index) in TxListDatas"><!---->
                                 <div data-v-bfa74ae2="" class="tx_baseinfo">
                                     <div data-v-bfa74ae2="" class="left">
-                                        <div data-v-bfa74ae2="" class="title">交易哈希</div><!---->
+                                        <div data-v-bfa74ae2="" class="title">{{$t('Block.hash')}}</div><!---->
                                         <router-link :to="{ name:'tx',query:{txid:item.txid } }">{{ item.txid }}</router-link>
                                     </div>
                                     <div data-v-bfa74ae2="" class="right">
-                                        <div data-v-bfa74ae2=""><span data-v-bfa74ae2="" class="title">时间</span>{{ timeformat(item.transtime) }}
+                                        <div data-v-bfa74ae2=""><span data-v-bfa74ae2="" class="title">{{$t('Block.time')}}</span>{{ timeformat(item.transtime) }}
                                         </div>
                                     </div>
                                 </div>
@@ -108,12 +108,12 @@
                                         <div data-v-4a9378aa="" class="left"><!----></div>
                                         <div data-v-4a9378aa="" class="right"><!---->
                                             <div data-v-4a9378aa=""><span data-v-4a9378aa=""
-                                                                          class="title">所在块</span>
+                                                                          class="title">{{$t('Block.block')}}</span>
                                                 <router-link :to="{ name:'block',query:{hash:item.block_hash } }">{{ item.block_hash }}</router-link>
                                             </div>
                                             <!---->
                                             <div data-v-4a9378aa=""><span data-v-4a9378aa=""
-                                                                          class="title">交易费</span>{{ item.fee }}
+                                                                          class="title">{{$t('Block.txFee')}}</span>{{ item.fee }}
                                             </div>
                                         </div>
                                     </div>

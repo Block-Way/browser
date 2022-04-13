@@ -14,22 +14,36 @@
 
         <div class="header_wrap btc">
             <div class="box"><a href="/" data-tracking="coins-header-home"
-                                alt="浏览器可查询链上的所有所有信息包括最新爆块，最新交易信息等，区块内的交易等等" title="HAH浏览器">
+                                alt="$t('eTopBar.alt')" title="$t('common.browser')">
                 <div class="order">
                     <div class="menu icon-menu"></div>
-                    <img src="../../assets/images/icon/hah.png" alt="区块链浏览器" class="coinlogo">
-                    <div class="coin_name">HAH 浏览器</div><!----></div>
+                    <!--<img src="../../assets/images/icon/hah.png" alt="$t('common.browser')" class="coinlogo">-->
+                    <img src="../../assets/images/custom/logo.jpg" alt="$t('common.browser')" class="coinlogo">
+                    <div class="coin_name">{{$t('common.browser')}}</div><!----></div>
             </a>
                 <div class="inner_header">
                     <div class="rt" style="min-width:500px;">
                         <ul class="bottom"><!---->
-                            <li class="item active"><a href="/" alt="" title="HAH浏览器" data-tracking="coins-header-home">首页</a>
+                            <li class="item active"><a href="/" alt="" title="$t('common.browser')" data-tracking="coins-header-home">{{$t('eTopBar.home')}}</a>
                             </li>
-                            <li class="item active"><a href="rank" alt="" title="HAH浏览器" data-tracking="coins-header-home">富豪榜</a>
+                            <li class="item active"><a href="rank" alt="" title="$t('common.browser')" data-tracking="coins-header-home">{{$t('eTopBar.rich')}}</a>
                             </li>
-                              <li class="item active"><a href="dpos" alt="" title="HAH浏览器" data-tracking="coins-header-home">dpos</a>
+                              <li class="item active"><a href="dpos" alt="" title="$t('common.browser')" data-tracking="coins-header-home">dpos</a>
                             </li>
+                            <el-select v-model="langFlag" @change="changeLanguages" class="language-select"
+                                     :filterable="true"
+                                    style="width: 130px;" placeholder="please choose language">
+                                <el-option :key="item.value" v-for="item in language"
+                                        :label="item.label" :value="item.value">
+                                </el-option>
+                            </el-select> 
+                           <!-- <li class="item active"   title="$t('common.browser')" @mouseover="showLanguage()" >language</li>
+                            <div v-show="openLanguage" class="language-menu"  @mouseleave="hideLanguage()">
+                                <div @click="chooseLanguage('zh-CN')">中文</div>
+                                <div @click="chooseLanguage('en-US')">English</div>
+                            </div>-->
                         </ul>
+                       
                     </div>
                 </div>
 
@@ -39,12 +53,27 @@
 
         <div class="mobile_header">
             <div class="head_menu"><a href="/" data-tracking="coins-header-home">
-                <div class="coin_name"><img src="../../assets/images/icon/hah.png" alt="" class="icon">
-                    HAH 浏览器
+                <!--<div class="coin_name"><img src="../../assets/images/icon/hah.png" alt="" class="icon">-->
+                   <div class="coin_name"><img src="../../assets/images/custom/logo.jpg" alt="" class="icon">          
+                    
+                    {{$t('common.browser')}}
                     <!----></div>
             </a>
-                <div class="menu openmenu"></div>
+                <div :class="{'menu':true, 'openmenu':!openFlag, 'closemenu': openFlag}" @click="toggleMenu"></div>
             </div><!---->
+
+            <ul class="smallUl menu-card" v-if="openFlag">
+                <li class="item active"><a href="/" alt="" title="$t('common.browser')" data-tracking="coins-header-home">{{$t('eTopBar.home')}}</a></li>
+                <li class="item active"><a href="rank" alt="" title="$t('common.browser')" data-tracking="coins-header-home">{{$t('eTopBar.rich')}}</a></li>
+                <li class="item active"><a href="dpos" alt="" title="$t('common.browser')" data-tracking="coins-header-home">dpos</a></li>     
+                <el-select v-model="langFlag" @change="changeLanguages" class="language-select"  :default-first-option="true" :filterable="true"
+                    style="width: 130px;" placeholder="please choose language">
+                    <el-option :key="item.value" v-for="item in language"
+                            :label="item.label" :value="item.value">
+                    </el-option>
+                </el-select> 
+            </ul>
+           
         </div>
 
 
@@ -58,16 +87,20 @@
                     <el-option
                             v-for="item in options"
                             :key="item.value"
-                            :label="item.label"
+                            :label="$t('common.'+item.label)"
                             :value="item.value">
                     </el-option>
                 </el-select>
             </div>
-            <input type="text" placeholder="搜索地址，交易，区块" value="" class="search" data-v-4196e052 v-model="search_text">
-            <div class="search_btn" data-v-4196e052 @click="search()">搜索</div><!----></div>
-        <div class="header_tips" data-v-4196e052></div><!----><!----></div>
+            <input type="text" :placeholder="$t('common.placeholder')" value="" class="search" data-v-4196e052 v-model="search_text">
+            <div class="search_btn" data-v-4196e052 @click="search()">{{$t('common.search')}}</div><!----></div>
+        <div class="header_tips" data-v-4196e052></div><!----><!---->
+        </div>
+      
+
 
     </div>
+
 </template>
 
 
@@ -78,16 +111,33 @@
             return {
                 options: [{
                     value: 1,
-                    label: '地址'
+                    label: 'address',
                 }, {
                     value: '2',
-                    label: '区块'
+                    label: 'block'
                 }, {
                     value: '3',
-                    label: '交易'
+                    label: 'tx'
                 }],
                 value: 1,
-                search_text:''
+                search_text:'',
+                openFlag: false,
+                openLanguage: false,
+                openLanguageDiv:false,
+                langFlag: 'zh-CN',
+                langText:'中文',
+                language: 
+                [
+                    {
+                        value: 'zh-CN',
+                        label: '中文'
+                    },
+                    {
+                        value: 'en-US',
+                        label: 'English'
+                    }
+                ],
+              
             }
         },
 
@@ -100,9 +150,39 @@
                 }else{
                     this.$router.push({ path: "tx", query: { txid: this.search_text } });
                 }
+            },
+            toggleMenu(){
+                this.openFlag =!this.openFlag
+   
+            },
+            chooseLanguage(value){
+                this.openLanguage =false
+                this.$i18n.locale=value
+            },
+            showLanguage(){
+                this.openLanguage=true
+                
+            },          
+            hideLanguage(){    
+                this.openLanguage=false
+            },
+            changeLanguages() {
+                localStorage.setItem('virtualCurrencyLocale', this.langFlag)
+                this.$i18n.locale = localStorage.getItem('virtualCurrencyLocale')
+
+                //console.log(this.$i18n.locale)//显示当前的语言
+                //this.$i18n.locale = this.langFlag;//将所选语言应用于页面
+            },
+            getDefaultLanguage(){
+                var virtualCurrencyLocale=localStorage.getItem('virtualCurrencyLocale')
+                if (virtualCurrencyLocale =='en-US'){
+                    this.langFlag='en-US'
+                    this.langText='English'    
+                }
             }
+
         },
 
-        created() {}
+        created() {this.getDefaultLanguage()}
     }
 </script>

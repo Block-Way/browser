@@ -6,33 +6,33 @@
                     <div data-v-6f78b530="" data-v-1a6f007e="">
                         <div data-v-6f78b530="" class="baseInfoCard">
                             <div data-v-6f78b530="" class="header">
-                                <div data-v-6f78b530="" class="title">地址信息</div>
+                                <div data-v-6f78b530="" class="title">{{$t('Address.addressInfo')}}</div>
                             </div>
                             <div data-v-6f78b530="" class="content">
                                 <div data-v-6f78b530="" class="item hash">
-                                    <div data-v-6f78b530="" class="key">普通地址<!----></div>
+                                    <div data-v-6f78b530="" class="key">{{$t('Address.address')}}<!----></div>
                                     <div data-v-6f78b530="" class="val">{{ address }}</div>
                                 </div><!----><!---->
                                 <div data-v-6f78b530="" class="item">
-                                    <div data-v-6f78b530="" class="key">余额</div>
+                                    <div data-v-6f78b530="" class="key">{{$t('Address.balance')}}</div>
                                     <div data-v-6f78b530="" class="value">
                                         {{ balance }} HAH
                                     </div>
                                 </div>
                                 <div data-v-6f78b530="" class="item">
-                                    <div data-v-6f78b530="" class="key">总收入</div>
+                                    <div data-v-6f78b530="" class="key">{{$t('Address.totalRevenue')}}</div>
                                     <div data-v-6f78b530="" class="value">
                                         {{ income }} HAH
                                     </div>
                                 </div>
                                 <div data-v-6f78b530="" class="item">
-                                    <div data-v-6f78b530="" class="key">总转出</div>
+                                    <div data-v-6f78b530="" class="key">{{$t('Address.totalTransferOut')}}</div>
                                     <div data-v-6f78b530="" class="value">
                                         {{ expend }} HAH
                                     </div>
                                 </div>
                                 <div data-v-6f78b530="" class="item">
-                                    <div data-v-6f78b530="" class="key">排行</div>
+                                    <div data-v-6f78b530="" class="key">{{$t('Address.rank')}}</div>
                                     <div data-v-6f78b530="" class="value">{{ rank }}</div>
                                 </div><!----><!----><!---->
                             </div>
@@ -40,7 +40,7 @@
                     </div>
                     <div data-v-1a6f007e="" class="baseInfoCard">
                         <div data-v-1a6f007e="" class="header">
-                            <div data-v-1a6f007e="" class="title">交易</div>
+                            <div data-v-1a6f007e="" class="title">{{$t('Address.transactions')}}</div>
                         </div><!---->
 
 
@@ -51,11 +51,11 @@
                                 <li data-v-bfa74ae2="" v-for="(item,index) in TxListDatas"><!---->
                                     <div data-v-bfa74ae2="" class="tx_baseinfo">
                                         <div data-v-bfa74ae2="" class="left">
-                                            <div data-v-bfa74ae2="" class="title">交易哈希</div><!---->
+                                            <div data-v-bfa74ae2="" class="title">{{$t('Address.hash')}}</div><!---->
                                             <router-link :to="{ name:'tx',query:{txid:item.txid } }">{{ item.txid }}</router-link>
                                         </div>
                                         <div data-v-bfa74ae2="" class="right">
-                                            <div data-v-bfa74ae2=""><span data-v-bfa74ae2="" class="title">时间</span>{{ timeformat(item.transtime) }}
+                                            <div data-v-bfa74ae2=""><span data-v-bfa74ae2="" class="title">{{$t('Address.time')}}</span>{{ timeformat(item.transtime) }}
                                             </div>
                                         </div>
                                     </div>
@@ -100,12 +100,12 @@
                                             <div data-v-4a9378aa="" class="left"><!----></div>
                                             <div data-v-4a9378aa="" class="right"><!---->
                                                 <div data-v-4a9378aa=""><span data-v-4a9378aa=""
-                                                                              class="title">所在块</span>
+                                                                              class="title">{{$t('Address.block')}}</span>
                                                     <router-link :to="{ name:'block',query:{hash:item.block_hash } }">{{ item.block_hash }}</router-link>
                                                 </div>
                                                 <!---->
                                                 <div data-v-4a9378aa=""><span data-v-4a9378aa=""
-                                                                              class="title">交易费</span>{{ item.fee }}
+                                                                              class="title">{{$t('Address.txFee')}}</span>{{ item.fee }}
                                                 </div>
                                             </div>
                                         </div>
