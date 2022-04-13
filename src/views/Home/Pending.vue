@@ -11,13 +11,13 @@
                     <div data-v-603f4bbb="">
 
 
-                        <!--                                最新交易列表 开始  -->
+                        <!--                               pc start -->
                         <div data-v-603f4bbb="" class="pending_list pc btc">
                             <ul data-v-603f4bbb="" class="item title">
                                 <li data-v-603f4bbb="" class="inner_item hash">{{$t('Pending.hash')}}</li>
                                 <li data-v-603f4bbb="" class="inner_item time">{{$t('Pending.time')}}</li>
                                 <li data-v-603f4bbb="" class="inner_item fee">{{$t('Pending.amount')}}</li>
-                                <!--                                    <li data-v-603f4bbb="" class="inner_item fee">手续费</li>-->
+                                <!--                                    <li data-v-603f4bbb="" class="inner_item fee"> Service Charge </li>-->
                                 <li data-v-603f4bbb="" class="inner_item from">{{$t('Pending.from')}}</li>
                                 <li data-v-603f4bbb="" class="inner_item to">{{$t('Pending.to')}}</li>
                             </ul><!---->
@@ -39,10 +39,10 @@
                             </ul>
 
                         </div>
-                        <!--                                最新交易列表 结束  -->
+                        <!--                               pc end -->
 
 
-                        <!--                                最新交易列表-手机端 开始  -->
+                        <!--                                mobile start -->
                         <div data-v-603f4bbb="" class="mobileList"><!---->
                             <ul data-v-603f4bbb="" class="items" v-for="(item,index) in TxListDatas" :key="index">
                                 <div data-v-603f4bbb="" class="item">
@@ -77,7 +77,7 @@
                                 </div>
                             </ul>
                         </div>
-                        <!--                                最新交易列表-手机端 结束  -->
+                        <!--                                mobile end -->
 
 
                     </div>

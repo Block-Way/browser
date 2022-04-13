@@ -130,5 +130,6 @@ module.exports = {
       rank:"区块链浏览器-排行",
       dpos:"区块链浏览器-dpos",
       dposDetail:"区块链浏览器-dposDetail",
+      main:"区块链浏览器-main",
     }
   }

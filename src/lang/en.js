@@ -134,5 +134,6 @@ module.exports = {
     rank:"Blockchain browser-Ranking",
     dpos:"Blockchain browser-dpos",
     dposDetail:"Blockchain browser-dposDetail",
+    main:"Blockchain browser-main",
   }
 }

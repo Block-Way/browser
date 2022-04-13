@@ -12,7 +12,7 @@
 
                     <div data-v-ce118d7e="" data-v-7b0e1c95="">
 
-                        <!--                                最新爆块列表  开始  -->
+                        <!--                                block pc start -->
                         <div data-v-ce118d7e="" class="block_list">
                             <ul data-v-ce118d7e="" class="item title">
                                 <li data-v-ce118d7e="" class="inner_item miner">{{$t('BlockList.height')}}</li>
@@ -45,9 +45,9 @@
                                             </li>
                                         </ul></span>
                         </div>
-                        <!--                                最新爆块列表  结束  -->
+                        <!--                                block pc end  -->
 
-                        <!--                                最新爆块手机端列表  开始  -->
+                        <!--                               block mobile start -->
                         <div data-v-ce118d7e="" class="mobileList">
                             <div data-v-ce118d7e="" class="items" v-for="(item,index) in BlocklistDatas" :key="index">
                                 <div data-v-ce118d7e="" class="item">
@@ -92,7 +92,7 @@
 
                             </div>
                         </div>
-                        <!--                                最新爆块手机端列表  结束  -->
+                        <!--                                block mobile end   -->
 
                     </div>
 

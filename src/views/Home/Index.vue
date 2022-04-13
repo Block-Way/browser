@@ -9,14 +9,14 @@
                 <div class="page-network">
                     <div class="count_down"><!----></div>
 
-<!--                                最新爆块 开始  -->
+<!--                                block pc start -->
                     <div>
                         <div class="latest_block item1" data-v-135e9942>
                             <div class="header" data-v-135e9942>
                                 <div class="title" data-v-135e9942><h2 class="txt" data-v-135e9942>{{$t('BlockList.newBlock')}}</h2></div>
                             </div>
                             <div data-v-ce118d7e="" data-v-135e9942="">
-    <!--                                最新爆块列表  开始  -->
+    <!--                               block pc start -->
                                 <div data-v-ce118d7e="" class="block_list">
                                     <ul data-v-ce118d7e="" class="item title">
                                         <li data-v-ce118d7e="" class="inner_item miner">{{$t('BlockList.height')}}</li>
@@ -49,10 +49,10 @@
                                             </li>
                                         </ul></span>
                                 </div>
-    <!--                                最新爆块列表  结束  -->
+    <!--                               block pc end  -->
 
 
-    <!--                                最新爆块手机端列表  开始  -->
+    <!--                               block mobile start -->
                                 <div data-v-ce118d7e="" class="mobileList">
                                     <div data-v-ce118d7e="" class="items" v-for="(item,index) in BlocklistDatas" :key="index">
                                         <div data-v-ce118d7e="" class="item">
@@ -74,19 +74,19 @@
                                             <div data-v-ce118d7e="" class="value">{{ item.reward_money }}</div>
                                         </div>
                                         <div data-v-ce118d7e="" class="item">
-                                            <div data-v-ce118d7e="" class="key">交易数量</div>
+                                            <div data-v-ce118d7e="" class="key">{{$t('BlockList.amount')}}</div>
                                             <div data-v-ce118d7e="" class="value"><a data-v-ce118d7e=""
                                                                                      href="javascript:void(0)">{{ item.txs }}</a>
                                             </div>
                                         </div><!---->
                                         <div data-v-ce118d7e="" class="item">
-                                            <div data-v-ce118d7e="" class="key">上一区块</div>
+                                            <div data-v-ce118d7e="" class="key">{{$t('BlockList.previousBlock')}}</div>
                                             <div data-v-ce118d7e="" class="value"><a data-v-ce118d7e=""
                                                                                      href="javascript:void(0)">{{ item.prev_hash }}</a>
                                             </div>
                                         </div><!---->
                                         <div data-v-ce118d7e="" class="item">
-                                            <div data-v-ce118d7e="" class="key">时间</div>
+                                            <div data-v-ce118d7e="" class="key">{{$t('BlockList.time')}}</div>
                                             <div data-v-ce118d7e="" class="value">
                                                 <div data-v-ce118d7e=""><span class="el-tooltip"
                                                                               aria-describedby="el-tooltip-4340"
@@ -97,7 +97,7 @@
 
                                     </div>
                                 </div>
-    <!--                                最新爆块手机端列表  结束  -->
+    <!--                                block mobile end   -->
 
                             </div>
                             <a href="blocklist" class="more" data-v-135e9942>
@@ -106,17 +106,17 @@
                                 </div>
                             </a></div>
                     </div>
-<!--                                最新爆块 结束  -->
+<!--                                block  end  -->
 
 
 
-<!--                                最新交易 开始  -->
+ 
                     <div class="pending_wrap" data-v-a7eb4120>
                         <div class="header" data-v-a7eb4120>
                             <div class="title" data-v-a7eb4120><h2 class="txt" data-v-a7eb4120>{{$t('Pending.tx')}}</h2></div>
                         </div>
                         <div data-v-603f4bbb="" data-v-a7eb4120="">
-    <!--                                最新交易列表 开始  -->
+    <!--                              pc start  -->
                             <div data-v-603f4bbb="" class="pending_list pc btc">
                                 <ul data-v-603f4bbb="" class="item title">
                                     <li data-v-603f4bbb="" class="inner_item hash">{{$t('Pending.hash')}}</li>
@@ -142,9 +142,9 @@
                                 </ul>
 
                             </div>
-    <!--                                最新交易列表 结束  -->
+    <!--                                pc end -->
 
-    <!--                                最新交易列表-手机端 开始  -->
+    <!--                                mobile start  -->
                             <div data-v-603f4bbb="" class="mobileList"><!---->
                                 <ul data-v-603f4bbb="" class="items" v-for="(item,index) in TxlistDatas" :key="index">
                                     <div data-v-603f4bbb="" class="item">
@@ -178,7 +178,7 @@
                                     </div>
                                 </ul>
                             </div>
-    <!--                                最新交易列表-手机端 结束  -->
+
                         </div>
 
                         <div class="more" data-v-a7eb4120>
@@ -189,7 +189,7 @@
                             </a>
                         </div>
                     </div>
-<!--                                最新交易 结束  -->
+<!--                                mobile end -->
 
 
                 </div>
@@ -208,7 +208,7 @@
             return {
                 BlocklistDatas: [],
                 TxlistDatas: [],
-                timer: null  // 定时器
+                timer: null  // timer
             }
         },
         methods: {
