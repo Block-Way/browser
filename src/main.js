@@ -7,6 +7,8 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 import "@babel/polyfill"
+import i18n from './lang/index'
+
 //兼容IE11
 if (!FileReader.prototype.readAsBinaryString) {
     FileReader.prototype.readAsBinaryString = function (fileData) {
@@ -67,5 +69,6 @@ Vue.prototype.$api = api;
 new Vue({
     store,
     router,
+    i18n,
     render: h => h(App)
 }).$mount('#app')

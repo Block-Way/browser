@@ -2,9 +2,9 @@
     <div>
 
         <div class="content-child" data-v-02b3c3b7 data-v-02b3c3b7>
-<!--            <h1 class="h1">比特币BTC区块链浏览器查询|官网|搭建|下载</h1>-->
+<!--            <h1 class="h1"></h1>-->
             <h2 class="h2">
-                区块链浏览器是全球范围内数据最精准，速度最快速的浏览器，用户可以使用区块链浏览器搭建钱包以及使用查询和搜索链上的所有区块链数据信息</h2>
+                	{{$t('Index.h2')}}</h2>
             <div class="p-home">
                 <div class="page-network">
                     <div class="count_down"><!----></div>
@@ -13,18 +13,18 @@
                     <div>
                         <div class="latest_block item1" data-v-135e9942>
                             <div class="header" data-v-135e9942>
-                                <div class="title" data-v-135e9942><h2 class="txt" data-v-135e9942>最新爆块</h2></div>
+                                <div class="title" data-v-135e9942><h2 class="txt" data-v-135e9942>{{$t('BlockList.newBlock')}}</h2></div>
                             </div>
                             <div data-v-ce118d7e="" data-v-135e9942="">
     <!--                                最新爆块列表  开始  -->
                                 <div data-v-ce118d7e="" class="block_list">
                                     <ul data-v-ce118d7e="" class="item title">
-                                        <li data-v-ce118d7e="" class="inner_item miner">区块高度</li>
-                                        <li data-v-ce118d7e="" class="inner_item miner">播报方</li>
-                                        <li data-v-ce118d7e="" class="inner_item prize">爆块奖励</li>
-                                        <li data-v-ce118d7e="" class="inner_item miner">交易数量</li>
-                                        <li data-v-ce118d7e="" class="inner_item miner">上一区块</li>
-                                        <li data-v-ce118d7e="" class="inner_item time">时间</li>
+                                        <li data-v-ce118d7e="" class="inner_item miner">{{$t('BlockList.height')}}</li>
+                                        <li data-v-ce118d7e="" class="inner_item miner">{{$t('BlockList.address')}}</li>
+                                        <li data-v-ce118d7e="" class="inner_item prize">{{$t('BlockList.reward')}}</li>
+                                        <li data-v-ce118d7e="" class="inner_item miner">{{$t('BlockList.amount')}}</li>
+                                        <li data-v-ce118d7e="" class="inner_item miner">{{$t('BlockList.previousBlock')}}</li>
+                                        <li data-v-ce118d7e="" class="inner_item time">{{$t('BlockList.time')}}</li>
                                     </ul>
                                     <span data-v-ce118d7e="">
                                         <ul data-v-ce118d7e="" class="item content" v-for="(item,index) in BlocklistDatas" :key="index">
@@ -56,19 +56,20 @@
                                 <div data-v-ce118d7e="" class="mobileList">
                                     <div data-v-ce118d7e="" class="items" v-for="(item,index) in BlocklistDatas" :key="index">
                                         <div data-v-ce118d7e="" class="item">
+                                            {{$t('BlockList.height')}}
                                             <div data-v-ce118d7e="" class="value">
                                                 <router-link :to="{ name:'block',query:{height:item.height } }">{{ item.height }}</router-link>
                                             </div>
                                         </div>
                                         <div data-v-ce118d7e="" class="item">
-                                            <div data-v-ce118d7e="" class="key">播报方</div>
+                                            <div data-v-ce118d7e="" class="key">{{$t('BlockList.address')}}</div>
                                             <div data-v-ce118d7e="" class="value"><a data-v-ce118d7e=""
                                                                                      href="javascript:void(0)">{{ item.reward_address }}</a>
                                             </div>
                                         </div><!---->
                                         <div data-v-ce118d7e="" class="item">
                                             <div data-v-ce118d7e="" class="key">
-                                                爆块奖励
+                                                {{$t('BlockList.reward')}}
                                                 </div>
                                             <div data-v-ce118d7e="" class="value">{{ item.reward_money }}</div>
                                         </div>
@@ -101,7 +102,7 @@
                             </div>
                             <a href="blocklist" class="more" data-v-135e9942>
                                 <div class="more" data-v-135e9942>
-                                    <div data-v-135e9942>查看更多 >></div>
+                                    <div data-v-135e9942>{{$t('common.more')}} >></div>
                                 </div>
                             </a></div>
                     </div>
@@ -112,17 +113,17 @@
 <!--                                最新交易 开始  -->
                     <div class="pending_wrap" data-v-a7eb4120>
                         <div class="header" data-v-a7eb4120>
-                            <div class="title" data-v-a7eb4120><h2 class="txt" data-v-a7eb4120>交易</h2></div>
+                            <div class="title" data-v-a7eb4120><h2 class="txt" data-v-a7eb4120>{{$t('Pending.tx')}}</h2></div>
                         </div>
                         <div data-v-603f4bbb="" data-v-a7eb4120="">
     <!--                                最新交易列表 开始  -->
                             <div data-v-603f4bbb="" class="pending_list pc btc">
                                 <ul data-v-603f4bbb="" class="item title">
-                                    <li data-v-603f4bbb="" class="inner_item hash">交易哈希</li>
-                                    <li data-v-603f4bbb="" class="inner_item time">时间</li>
-                                    <li data-v-603f4bbb="" class="inner_item fee">交易金额</li>
-                                    <li data-v-603f4bbb="" class="inner_item from">从</li>
-                                    <li data-v-603f4bbb="" class="inner_item to">到</li>
+                                    <li data-v-603f4bbb="" class="inner_item hash">{{$t('Pending.hash')}}</li>
+                                    <li data-v-603f4bbb="" class="inner_item time">{{$t('Pending.time')}}</li>
+                                    <li data-v-603f4bbb="" class="inner_item fee">{{$t('Pending.amount')}}</li>
+                                    <li data-v-603f4bbb="" class="inner_item from">{{$t('Pending.from')}}</li>
+                                    <li data-v-603f4bbb="" class="inner_item to">{{$t('Pending.to')}}</li>
                                 </ul><!---->
 
                                 <ul data-v-603f4bbb="" class="item content" v-for="(item,index) in TxlistDatas" :key="index">
@@ -147,31 +148,31 @@
                             <div data-v-603f4bbb="" class="mobileList"><!---->
                                 <ul data-v-603f4bbb="" class="items" v-for="(item,index) in TxlistDatas" :key="index">
                                     <div data-v-603f4bbb="" class="item">
-                                        <div data-v-603f4bbb="" class="key">交易哈希</div>
+                                        <div data-v-603f4bbb="" class="key">{{$t('Pending.hash')}}</div>
                                         <div data-v-603f4bbb="" class="value">
                                             <router-link :to="{ name:'tx',query:{txid:item.txid } }">{{ item.txid }}</router-link>
                                         </div>
                                     </div>
                                     <div data-v-603f4bbb="" class="item">
-                                        <div data-v-603f4bbb="" class="key">时间</div>
+                                        <div data-v-603f4bbb="" class="key">{{$t('Pending.time')}}</div>
                                         <div data-v-603f4bbb="" class="value"><span data-v-603f4bbb=""
                                                                                     class="el-tooltip"
                                                                                     aria-describedby="el-tooltip-6781"
                                                                                     tabindex="0">{{ timeformat(item.transtime) }}</span></div>
                                     </div>
                                     <div data-v-603f4bbb="" class="item">
-                                        <div data-v-603f4bbb="" class="key">交易金额</div>
+                                        <div data-v-603f4bbb="" class="key">{{$t('Pending.Amount')}}</div>
                                         <div data-v-603f4bbb="" class="value">
                                             {{ item.amount }}
                                         </div>
                                     </div>
                                     <div data-v-603f4bbb="" class="item">
-                                        <div data-v-603f4bbb="" class="key">从</div>
+                                        <div data-v-603f4bbb="" class="key">{{$t('Pending.from')}}</div>
                                         <div data-v-603f4bbb="" class="value"><!----><span data-v-603f4bbb="">{{ item.from }}</span>
                                             <!----></div>
                                     </div>
                                     <div data-v-603f4bbb="" class="item">
-                                        <div data-v-603f4bbb="" class="key">到</div>
+                                        <div data-v-603f4bbb="" class="key">{{$t('Pending.to')}}</div>
                                         <div data-v-603f4bbb="" class="value"><!----><span data-v-603f4bbb="">{{ item.to }}</span>
                                             <!----></div>
                                     </div>
@@ -183,7 +184,7 @@
                         <div class="more" data-v-a7eb4120>
                             <a href="pending" class="more" data-v-135e9942>
                                 <div class="more" data-v-135e9942>
-                                    <div data-v-135e9942>查看更多 >></div>
+                                    <div data-v-135e9942>{{$t('common.more')}} >></div>
                                 </div>
                             </a>
                         </div>

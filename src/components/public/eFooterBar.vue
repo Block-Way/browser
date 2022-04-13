@@ -142,7 +142,7 @@
 
             <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8">
                 <div>
-                    <span>We are social</span>
+                    <span>{{$t('eFooterBar.link')}}</span>
                     <a href="javascript:void(0);" class="social">
                     <img src="../../assets/images/custom/twitter.png" class="fa fa-twitter">
                     </a>
@@ -162,7 +162,7 @@
                     <p class="text-center reset">
                     <a href="https://github.com/Block-Way/browser"  target="_blank"  class="btn btn-default btn-lg btn-gh">
                     <i class="fa fa-github"></i>
-                    Fork me on GitHub
+                    {{$t('eFooterBar.fork')}}
                     </a>
                     </p>        
                 </div>
@@ -170,7 +170,7 @@
             <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="8">
                 <div>
                     <p class="text-right">
-                    Powered by <a href="https://blockway.io/"  target="_blank" >Block_Way Web Services</a><br>
+                    {{$t('eFooterBar.power')}} <a href="https://blockway.io/"  target="_blank" >Block_Way {{$t('eFooterBar.webService')}}</a><br>
                     © 2022 - Block_Way
                     </p>
                 </div>
