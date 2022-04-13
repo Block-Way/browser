@@ -14,11 +14,11 @@
 
         <div class="header_wrap btc">
             <div class="box"><a href="/" data-tracking="coins-header-home"
-                                alt="$t('eTopBar.alt')" title="$t('common.browser')">
+                                :alt="$t('eTopBar.alt')" :title="$t('common.browser')">
                 <div class="order">
                     <div class="menu icon-menu"></div>
                     <!--<img src="../../assets/images/icon/hah.png" alt="$t('common.browser')" class="coinlogo">-->
-                    <img src="../../assets/images/custom/logo.jpg" alt="$t('common.browser')" class="coinlogo">
+                    <img src="../../assets/images/custom/logo.png" alt="$t('common.browser')" class="coinlogo">
                     <div class="coin_name">{{$t('common.browser')}}</div><!----></div>
             </a>
                 <div class="inner_header">

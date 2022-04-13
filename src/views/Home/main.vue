@@ -1,7 +1,8 @@
     <template>
     <div>
     <div class="person_img" >
-        <img id="person_img" :src="img_url"  @mouseover="person_info()" @mouseleave="cl_person_info()"/>
+       <!-- <img id="person_img" :src="img_url"  @mouseover="person_info()" @mouseleave="cl_person_info()"/>-->
+        <div>{{this.golbal.virtualCurrencyUnit}}</div>
      </div>
     <div v-show="person_con" class="hidden_div" >
          <div>{{userid}}</div>
@@ -34,6 +35,7 @@
                 img_url:'https://btc.tokenview.com/icon/btc.png',
                 langFlag: 'zh',
                 langText:'中文/CN',
+            
                 language: 
                 [
                     {
@@ -45,12 +47,14 @@
                         label: '英文/EN'
                     }
                 ],
+                
 
             }
         },
          methods:{
          person_info(){
             this.person_con = true;
+            
         },
         
          cl_person_info(){ 
@@ -59,8 +63,11 @@
         changeLanguages() {
             console.log(this.$i18n.locale) 
             this.$i18n.locale = this.langFlag; 
+            console.log(this.golbal);
+           
         },
         
         }
+       
     }
     </script>

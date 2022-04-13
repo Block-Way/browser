@@ -9,6 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import "@babel/polyfill"
 import i18n from './lang/index'
 
+
 //compatible IE11
 if (!FileReader.prototype.readAsBinaryString) {
     FileReader.prototype.readAsBinaryString = function (fileData) {
@@ -63,6 +64,8 @@ import api from './request/api';
 Vue.prototype.$api = api;
 
 
+import golbal  from './lang/global';
+Vue.prototype.golbal = golbal
 // import staffapi from './request/staffapi';
 // Vue.prototype.$staffapi = staffapi;
 
@@ -70,6 +73,6 @@ Vue.prototype.$api = api;
 new Vue({
     store,
     router,
-    i18n,
+    i18n,    
     render: h => h(App)
 }).$mount('#app')
