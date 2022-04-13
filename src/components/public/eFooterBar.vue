@@ -14,9 +14,7 @@
                      <img src="../../assets/images/custom/facebook.png" class="fa fa-twitter">
                     </a>
                     <a :href="this.golbal.githubLink" target="_blank" class="social">                    
-                    <!--<img src="../../assets/images/icon/hah.png" class="fa fa-twitter">-->
-                    <img src="../../assets/images/custom/logo.png" class="fa fa-web">
-                    
+                        <img src="../../assets/images/custom/logo.png" class="fa fa-web">                    
                     </a>
                     
                 </div>

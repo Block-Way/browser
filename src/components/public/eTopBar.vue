@@ -16,8 +16,7 @@
             <div class="box"><a href="/" data-tracking="coins-header-home"
                                 :alt="$t('eTopBar.alt')" :title="$t('common.browser')">
                 <div class="order">
-                    <div class="menu icon-menu"></div>
-                    <!--<img src="../../assets/images/icon/hah.png" alt="$t('common.browser')" class="coinlogo">-->
+                    <div class="menu icon-menu"></div>                
                     <img src="../../assets/images/custom/logo.png" alt="$t('common.browser')" class="coinlogo">
                     <div class="coin_name">{{$t('common.browser')}}</div><!----></div>
             </a>
@@ -53,9 +52,7 @@
 
         <div class="mobile_header">
             <div class="head_menu"><a href="/" data-tracking="coins-header-home">
-                <!--<div class="coin_name"><img src="../../assets/images/icon/hah.png" alt="" class="icon">-->
-                   <div class="coin_name"><img src="../../assets/images/custom/logo.jpg" alt="" class="icon">          
-                    
+                    <div class="coin_name"><img src="../../assets/images/custom/logo.jpg" alt="" class="icon"> 
                     {{$t('common.browser')}}
                     <!----></div>
             </a>
