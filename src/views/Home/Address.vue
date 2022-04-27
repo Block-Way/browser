@@ -40,7 +40,12 @@
                                 <div data-v-6f78b530="" class="item">
                                     <div data-v-6f78b530="" class="key">{{$t('Address.rank')}}</div>
                                     <div data-v-6f78b530="" class="value">{{ rank }}</div>
-                                </div><!----><!----><!---->
+                                </div>
+                                 <div data-v-6f78b530="" class="item">
+                                    <div data-v-6f78b530="" class="key">nonce</div>
+                                    <div data-v-6f78b530="" class="value">{{ nonce }}</div>
+                                </div>
+                                <!----><!----><!---->
                             </div>
                         </div>
                     </div>
@@ -151,6 +156,7 @@
                 address:'',
                 balance:'',
                 locked:'',
+                nonce:'',
                 income:'',
                 expend:'',
                 rank:'',
@@ -191,7 +197,8 @@
                 let that=this
                 this.$api.balance(params).then(res=>{
                     console.log('res',res);
-                    that.locked=res.locked
+                    that.locked = res.locked
+                    that.nonce = res.nonce
                 });
 
             },
