@@ -20,6 +20,12 @@
                                     </div>
                                 </div>
                                 <div data-v-6f78b530="" class="item">
+                                    <div data-v-6f78b530="" class="key">{{$t('Address.locked')}}</div>
+                                    <div data-v-6f78b530="" class="value">
+                                        {{ locked }} {{ virtualCurrencyUnit }}
+                                    </div>
+                                </div>
+                                <div data-v-6f78b530="" class="item">
                                     <div data-v-6f78b530="" class="key">{{$t('Address.totalRevenue')}}</div>
                                     <div data-v-6f78b530="" class="value">
                                         {{ income }} {{ virtualCurrencyUnit }}
@@ -144,6 +150,7 @@
             return {
                 address:'',
                 balance:'',
+                locked:'',
                 income:'',
                 expend:'',
                 rank:'',
@@ -176,7 +183,18 @@
                     that.total = res.data.total
                 });
             },
+            getBalanceInfo(){
+                let params={
+                    address:this.address,
+                    symbol:'HAH',                 
+                };
+                let that=this
+                this.$api.balance(params).then(res=>{
+                    console.log('res',res);
+                    that.locked=res.locked
+                });
 
+            },
             handleSizeChange(newSzie) {
                 this.pageSize = newSzie
                 this.getList()
@@ -206,6 +224,7 @@
          
             //alert(this.address)
             this.getaddressinfo()
+            this.getBalanceInfo()
         }
     }
 

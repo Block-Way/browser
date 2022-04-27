@@ -35,6 +35,7 @@ module.exports = {
     time:"Time",
     block:"Block",
     txFee:"Transaction fee",
+    locked:"Locked",
   },
   Block:{
     blockInfo:"Block information",

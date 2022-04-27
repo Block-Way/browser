@@ -32,6 +32,7 @@ module.exports = {
       time:"时间",
       block:"所在块",
       txFee:"交易费",
+      locked:"锁定余额",
     },
     Block:{
       blockInfo:"区块信息",
