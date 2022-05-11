@@ -23,12 +23,19 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### nginx setup
+### browser install
 ``` bash
-sduo apt install nginx
-sudo cp nginx.conf /etc/nginx/conf.d/
+sudo apt install nginx
+sudo cp hah.conf /etc/nginx/sites-available/hah
+sudo ln -s /etc/nginx/sites-available/hah /etc/nginx/sites-enabled/hah
+npm ci
+npm run build
+sudo ln -sfn $PWD/dist /var/www/hah
 sudo service nginx restart
-tar -czvf dist.tar.gz dist
-scp ./dist.tar.gz hah-xg:/home/zos/web/dist.tar.gz
-tar -xzvf dist.tar.gz
+```
+
+### browser uninstall
+``` bash
+sudo apt remove nginx nginx-common
+sudo apt purge nginx nginx-common
 ```
